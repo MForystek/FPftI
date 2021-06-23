@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Michał Forystek, Szymon Szymiczek i Anita Jamroży">
+    <meta name="description"
+        content="Strona z memami wykonana jako projekt z przedwiotu WWW i Języki Skryptowe na IV semestrze kierunku Teleinformatyka na AGH">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="shortcut icon" href="../Resources/icon.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="./scripts.js"></script>
+    <title>FPftI grupa s113</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="./index.html">Zabawne</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="./index.html">Main</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./index.html">Waiting</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./index.html">Top10</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./index.html">Profile</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <p>
+                                TUTAJ &#10024; MEMY&#10024;
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            Informacje o Tobie
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-evenly p-2">
+                                <img src="../Resources/default-avatar.jpg" class="img-fluid" width="200" height="200">
+                            </div>
+                            <!--Tu to chyba trzeba te dane z jakiegos jsona czy innego chuja-->
+                            <p>
+                                Login: <br>
+                                Imię:  <br>        
+                                Wiek:   <br>
+                                Ilość dodanych memów:? <br>
+                                Łączna ilość polubień:? <br>
+
+                            </p>
+                            <button class="btn btn-outline-light" type="submit">Ustawienia</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            Nawigacja
+                        </div>
+                        <!--Te zjebane przyciski powinny byc na całą szerokość okna-->
+                        <div class="card-body">
+                            <button class="btn btn-outline-light" type="submit">Ulubione</button>
+                            <button class="btn btn-outline-light" type="submit">Dodane</button><br>
+                            <button class="btn btn-primary btn-dark" type="submit">Dodaj nowy mem</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="card-footer">WWWiJS - Project 2021</footer>
+    </div>
+</body>
+
+</html>
