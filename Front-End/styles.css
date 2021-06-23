@@ -1,0 +1,28 @@
+html body {
+    background-color: black;
+}
+
+.card .card-header {
+    background-color: rgba(54, 92, 11, 0.747);
+}
+
+.card .card-body {
+    background-color: rgba(0, 82, 4, 0.363);
+}
+
+.container {
+    background-color: rgba(73, 55, 6, 0.466);
+    padding: 10px;
+}
+
+nav .pagination .page-item .page-link {
+    background-color: rgba(49, 121, 52, 0.486);
+}
+
+.card-footer {
+    color: white;
+}
+
+.down {
+    float: left;
+}
