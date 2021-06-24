@@ -48,10 +48,14 @@ nav .pagination .page-item .page-link {
     background-color: hsl(130, 75%, 60%);
 }
 
-.comment-author {
+.comment-properties {
     font-weight: bold
 }
 
 #info{
     background-color: inherit;
+}
+
+#my-list {
+    background-color: hsl(123, 50%, 10%);
 }
