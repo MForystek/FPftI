@@ -1,5 +1,6 @@
 html body {
     background-color: black;
+    color: white;
 }
 
 .card .card-header {
@@ -19,10 +20,13 @@ nav .pagination .page-item .page-link {
     background-color: rgba(49, 121, 52, 0.486);
 }
 
-.card-footer {
-    color: white;
+#login-form *,  #register-form * {
+    margin-bottom: 5px;
+    padding: 5px 10px 5px 10px;
 }
 
-.down {
-    float: left;
+.my-label {
+    border: 3px solid hsl(130, 75%, 30%);
+    border-radius: 5px;
+    background-color: hsl(130, 75%, 60%);
 }
