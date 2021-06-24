@@ -12,16 +12,48 @@
                 <div class="card-header">
                     Your Information
                 </div>
-                <div class="card-body row">
-                    <!--Tu to chyba trzeba te dane z jakiegos jsona-->
-                    <p>
-                        Login: <br>
-                        Name:  <br>        
-                        Age:   <br>
-                        Your FPftI count: <br>
-                        Total likes of your FPftI: <br>
-                    </p>
-                    <a class="btn btn-outline-light" href="https://s113.labagh.pl/index.html?page=settings">Settings</a>
+                <div class="card-body">
+                    <div class="container" id="info">
+                        <div class="row">
+                            <div class="col">
+                                Login
+                            </div>
+                            <div class="col insert">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                Name
+                            </div>
+                            <div class="col insert">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                Age
+                            </div>
+                            <div class="col insert">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                Your FPftI count
+                            </div>
+                            <div class="col insert">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                Total likes of your FPftI
+                            </div>
+                            <div class="col insert">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="d-grid gap-2">
+                        <a class="btn btn-outline-light" href="https://s113.labagh.pl/index.html?page=settings">Settings</a>
+                    </div>
                 </div>
             </div>
             <div class="card">
@@ -55,3 +87,31 @@
         </div>
     </div>
 </div>
+<script>
+    var mydata = {"Login":"test1", "Name": "imie1", "age": 20, "Your FPftI count": 1, "Total": 0};
+    jQuery.each(mydata, function(){
+
+    })
+    $( ".insert" ).each(function( index ) {
+        switch (index) {
+            case 0:
+                this.append(mydata.Login);
+                break;
+            case 1:
+                this.append(mydata.Name);
+                break;
+            case 2:
+                this.append(mydata.age);
+                break;
+            case 3:
+                this.append(mydata["Your FPftI count"]);
+                break;
+            case 4:
+                this.append(mydata["Total"]);
+                break;
+            default:
+                console.log('no chuj');
+        
+        }
+    });
+</script>
