@@ -22,5 +22,9 @@ $(function(){
         $("#unique-content").load("https://s113.labagh.pl/frontend/subdomains/admin.html");
     } else if (result === "settings") {
         $("#unique-content").load("https://s113.labagh.pl/frontend/subdomains/settings.html");
+    } else if (result === "fpfti") {
+        $("#unique-content").load("https://s113.labagh.pl/frontend/subdomains/fpfti.html");
+    } else {
+        $("#unique-content").load("https://s113.labagh.pl/frontend/subdomains/oops.html");
     }
 });

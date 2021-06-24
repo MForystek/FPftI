@@ -11,6 +11,15 @@ html body {
     background-color: rgba(54, 92, 11, 0.747);
 }
 
+.card a {
+    color: white;
+    text-decoration: none;
+}
+
+.card a:hover {
+    color: white;
+}
+
 .card .card-body {
     background-color: rgba(0, 82, 4, 0.363);
 }
