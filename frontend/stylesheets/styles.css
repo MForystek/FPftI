@@ -51,3 +51,7 @@ nav .pagination .page-item .page-link {
 .comment-author {
     font-weight: bold
 }
+
+#info{
+    background-color: inherit;
+}
