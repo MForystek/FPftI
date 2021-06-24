@@ -20,5 +20,7 @@ $(function(){
         $("#unique-content").load("https://s113.labagh.pl/frontend/subdomains/profile.html");
     } else if (result === "admin") {
         $("#unique-content").load("https://s113.labagh.pl/frontend/subdomains/admin.html");
+    } else if (result === "settings") {
+        $("#unique-content").load("https://s113.labagh.pl/frontend/subdomains/settings.html");
     }
 });

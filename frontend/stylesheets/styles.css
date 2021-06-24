@@ -3,6 +3,10 @@ html body {
     color: white;
 }
 
+.card{
+    margin-top: 10px;
+}
+
 .card .card-header {
     background-color: rgba(54, 92, 11, 0.747);
 }
@@ -14,6 +18,10 @@ html body {
 .container {
     background-color: rgba(73, 55, 6, 0.466);
     padding: 10px;
+}
+
+#settings {
+    background-color: inherit;
 }
 
 nav .pagination .page-item .page-link {
