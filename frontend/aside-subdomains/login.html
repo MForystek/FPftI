@@ -4,11 +4,11 @@
     </div>
     <div class="card-body">
         <ul class="navbar-nav justify-content-end">
-            <form class="row" id="login-form" method="POST">
+            <form action="../../backend/login.php" class="row" id="login-form" method="POST">
                 <label class="form-label my-label">Login</label>
-                <input class="form-control" type="text" placeholder="Type your Login here..." aria-label="Login">
+                <input class="form-control" type="text" name="login" placeholder="Type your Login here..." aria-label="Login">
                 <label class="form-label my-label">Password</label>
-                <input class="form-control" type="password" placeholder="Type your Password here..." aria-label="Password">
+                <input class="form-control" type="password" name="password" placeholder="Type your Password here..." aria-label="Password">
                 <button class="btn btn-dark" type="submit">SignIn</button>
             </form>
         </ul>

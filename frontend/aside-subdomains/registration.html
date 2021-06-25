@@ -3,13 +3,13 @@
         Don't have an account yet? Sign Up now!
     </div>
     <div class="card-body">
-        <form class="row" id="register-form" method="POST">
+        <form action="../../backend/registration.php" class="row" id="register-form" method="POST">
             <label class="form-label my-label">Login</label>
-            <input class="form-control" type="text" placeholder="Type your Login here..." aria-label="Login">
+            <input class="form-control" type="text" name="login" placeholder="Type your Login here..." aria-label="Login">
             <label class="form-label my-label">Password</label>
-            <input class="form-control" type="password" placeholder="Type your Password here..." aria-label="Password">
+            <input class="form-control" type="password" name="password" placeholder="Type your Password here..." aria-label="Password">
             <label class="form-label my-label">Repeat Password</label>
-            <input class="form-control" type="password" placeholder="Retype your Password here..." aria-label="Repeat password">
+            <input class="form-control" type="password" name="repassword" placeholder="Retype your Password here..." aria-label="Repeat password">
             <div class="g-recaptcha" data-sitekey="MIGeMA0GCSqGSIb3DQEBAQUAA4GMADCBiAKBgFdMpmtrsmgu96bkRB+zab/QUGNS3tf5z/XIspbcOrR6X1IB32dswz1i8MXAJpQFgGdJEk93amL3PB+T6YcKxDLq31mECRYl7+H4B2/Z1ufSc63mtpAvVxJx2VR5Dx2wxYJP0pNG0owPo+yOp6JAtZw7nQNHdJ2aQpFyYJAWTs5vAgMBAAE="></div>
             <button class="btn btn-dark" type="submit">SignUp</button>
         </form>

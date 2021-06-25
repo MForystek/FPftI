@@ -1,64 +1,25 @@
-<div id="content">
-
-    <!--Complete card for one FPftI except it needs to be improved-->
-    <div class="card">
-        <a href="https://s113.labagh.pl/index.html?page=fpfti">
-            <div class="card-header">
-                <h5>When you're about to conquer the Europe but Brits don't want to cooperate</h5>
-            </div>
-        </a>
-        <div class="card-body">
-            <span class="badge bg-success">
-                <a href="https://s113.labagh.pl/index.html?page=user2317">Author: SomeUser2317</a>
-            </span>
-            <span class="badge bg-success">
-                Id: 293821
-            </span>
-                
-            <a href="https://s113.labagh.pl/index.html?page=fpfti">
-                <div class="d-flex justify-content-evenly p-2">
-                    <img src="./resources/najazdNaRosje.png" class="img-fluid">
+<div class="fpfti-template"></div>
+<div class="card">
+    <div class="card-header">
+        <h5>2317 Comments:</h5>
+        <form class="d-flex" method="POST">
+            <input class="form-control me-2" type="search" placeholder="Add your comment...">
+            <button class="btn btn-light" type="submit">Add</button>
+        </form>
+    </div>
+    <div class="card-body">
+        <div class="card bg-transparent">
+            <a href="https://s113.labagh.pl/index.html?page=user2731">
+                <div class="card-header">
+                    <span class="comment-properties">Author: SomeUser2731 | Id: 64546
                 </div>
             </a>
-            <div class="tags">
-                    
-            </div>
-            <br>
-            <div class="row fpfti-buttons">
-                <button class="btn btn-success col-4">Like</button>
-                <button class="btn btn-danger col-4">Dislike</button>
-                <button class="btn btn-info col-4">+3721</button>
+            <div class="card-body">
+                <span>Here we have an example of the greatly sophisticaded humor. 2/10 cause this stupid devs didn't add more advanced rating than just like count! Pathetic!!!!!1111!!1!1! </span>
             </div>
         </div>
     </div>
-    <!--End of fully complete but stil unfinished card-->
-
-    <div class="card">
-        <div class="card-header">
-            <h5>2317 Comments:</h5>
-            <form class="d-flex" method="POST">
-                <input class="form-control me-2" type="search" placeholder="Add your comment...">
-                <button class="btn btn-light" type="submit">Add</button>
-            </form>
-        </div>
-        <div class="card-body">
-            <div class="card bg-transparent">
-                <a href="https://s113.labagh.pl/index.html?page=user2731">
-                    <div class="card-header">
-                        <span class="comment-properties">Author: SomeUser2731 | Id: 64546
-                    </div>
-                </a>
-                <div class="card-body">
-                    <span>Here we have an example of the greatly sophisticaded humor. 2/10 cause this stupid devs didn't add more advanced rating than just like count! Pathetic!!!!!1111!!1!1! </span>
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>
 <script>
-    var mytags = {"tags": [ "John", "Anna", "Peter" ]}; 
-    jQuery.each(mytags.tags, function() {
-		$(".tags").append('<span class="badge bg-success"><a href="https://www.youtube.com/watch?v=D-UmfqFjpl0">' + this + '</a></span>' + " ");
-	});
+    template("https://s113.labagh.pl/resources/najazdNaRosje.png", "mania", "kotania", 43, 546, "yes", ".fpfti-template", "details");
 </script>
