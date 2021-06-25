@@ -9,48 +9,33 @@ function findGetParameter(parameterName) {
 }
 
 $(function(){
-    var result = findGetParameter("page");
+    result = findGetParameter("page"); 
     if (result === null || result === "main") {
         $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/main.html");
+        $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/login.html");
+        $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/registration.html");
     } else if (result === "waiting") {
         $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/waiting.html");
+        $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/add-fpfti.html");
+        $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/sleeping-reaper.html");
     } else if (result === "top") {
-        $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/top.html");
+        $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/main.html");
+        $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/login.html");
+        $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/registration.html");
     } else if (result === "profile") {
         $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/profile.html");
+        $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/information.html");
+        $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/add-fpfti.html");
     } else if (result === "admin") {
         $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/admin.html");
+        $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/remove.html");
+        $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/deadly-reaper.html");
     } else if (result === "settings") {
         $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/settings.html");
+        $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/information-settings.html");
     } else if (result === "fpfti") {
         $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/fpfti.html");
     } else {
         $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/oops.html");
     }
-
-    result = findGetParameter("asidefirst");
-    if (result === null || result === "login") {
-        $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/login.html");
-    } else if (result === "") {
-        $("#aside-first").load("https://s113.labagh.pl/frontend/subdomains/add-fpfti.html");
-    } else if (result === "information") {
-        $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/information.html");
-    } else if (result === "informationsettings") {
-        $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/informationsettings.html");
-    } else if (result === "addfpfti") {
-        $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/add-fpfti.html");
-    } else if (result === "remove") {
-        $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/remove.html");
-    } else if (result === "not") {}
-
-    result = findGetParameter("asidesecond");
-    if (result === null || result === "registration") {
-        $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/registration.html");
-    } else if (result === "sleepingreaper") {
-        $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/sleeping-reaper.html");
-    } else if (result === "deadlyreaper") {
-        $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/deadly-reaper.html");
-    } else if (result === "addfpfti") {
-        $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/add-fpfti.html");
-    } else if (result === "not") {}
 });

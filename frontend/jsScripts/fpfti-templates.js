@@ -1,11 +1,27 @@
 function addLikeCount(likeCount) {
     if (likeCount > 0) {
         return '+' + likeCount;
-    } else if (likeCount === 0) {
-        return likeCount;
     } else {
-        return '-' + likeCount;
+        return likeCount;
     }
+}
+
+function addButtons(purpose) {
+    if (purpose === "admin") {
+        var first = 'Accept';
+        var second = 'Deny';
+    } else {
+        var first = 'Like';
+        var second = 'Dislike';
+    }
+    return '<button class="btn btn-success col-4">' + first + '</button> <button class="btn btn-danger col-4">' + second + '</button>';
+}
+
+function addTagsHTML(purpose) {
+    if (purpose === "details") {
+        return '<div class="tags"></div>' + '</br>';
+    }
+    return "";
 }
 
 function template(pic, op, title, id, likeCount, verified, classs, purpose) {
@@ -29,15 +45,10 @@ function template(pic, op, title, id, likeCount, verified, classs, purpose) {
                     '<div class="d-flex justify-content-evenly p-2">' +
                         '<img src="' + pic + '" class="img-fluid">' +
                     '</div>' +
-                '</a>';
-    
-    if (purpose === "profile" || purpose === "details") {
-        temp += '<div class="tags"></div>' + '</br>';
-    }
-    
-    temp +=     '<div class="row fpfti-buttons">' +
-                    '<button class="btn btn-success col-4">Like</button>' +
-                    '<button class="btn btn-danger col-4">Dislike</button>' +
+                '</a>' +
+                addTagsHTML(purpose) + 
+                '<div class="row fpfti-buttons">' +
+                    addButtons(purpose) +
                     '<button class="btn btn-info col-4 disabled">' + addLikeCount(likeCount) + '</button>' +
                 '</div>' +
             '</div>' +
@@ -45,7 +56,7 @@ function template(pic, op, title, id, likeCount, verified, classs, purpose) {
 
     $(classs).append(temp);
 
-    if (purpose === "profile" || purpose === "details") {
+    if (purpose === "details") {
         var mytags = {"tags": ["#funny", "#picture", "#planning"]}; 
         jQuery.each(mytags.tags, function() {
 		    $(".tags").append('<span class="badge bg-success"><a href="https://www.youtube.com/watch?v=D-UmfqFjpl0">' + this + '</a></span>' + " ");
