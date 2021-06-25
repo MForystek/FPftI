@@ -57,31 +57,13 @@
     </div>
 </div>
 <script>
-    var mydata = {"Login":"test1", "Name": "imie1", "age": 20, "Your FPftI count": 1, "Total": 0};
-    jQuery.each(mydata, function(){
-
-    })
-    $( ".insert" ).each(function( index ) {
-        switch (index) {
-            case 0:
-                this.append(mydata.Login);
-                break;
-            case 1:
-                this.append(mydata.Name);
-                break;
-            case 2:
-                this.append(mydata.age);
-                break;
-            case 3:
-                this.append(mydata["Your FPftI count"]);
-                break;
-            case 4:
-                this.append(mydata["Total"]);
-                break;
-            default:
-                console.log('nothing');
-        }
-    });
+    var mydata = {"Login":"test1", "Name": "imie1", "Age": 20, "FPftIcount": 1, "Total": 0};
+    var table = $( ".insert" );
+    table[0].append(mydata.Login);
+    table[1].append(mydata.Name);
+    table[2].append(mydata.Age);
+    table[3].append(mydata.FPftIcount);
+    table[4].append(mydata.Total);
 
     var fav = document.getElementsByClassName('fav');
     for (var i = 0; i < fav.length; i++) {
