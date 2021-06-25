@@ -20,6 +20,10 @@
                     <img src="./resources/najazdNaRosje.png" class="img-fluid">
                 </div>
             </a>
+            <div class="tags">
+                    
+            </div>
+            <br>
             <div class="row fpfti-buttons">
                 <button class="btn btn-success col-4">Like</button>
                 <button class="btn btn-danger col-4">Dislike</button>
@@ -52,3 +56,9 @@
     </div>
 
 </div>
+<script>
+    var mytags = {"tags": [ "John", "Anna", "Peter" ]}; 
+    jQuery.each(mytags.tags, function() {
+		$(".tags").append('<span class="badge bg-success"><a href="https://www.youtube.com/watch?v=D-UmfqFjpl0">' + this + '</a></span>' + " ");
+	});
+</script>
