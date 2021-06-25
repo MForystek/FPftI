@@ -40,22 +40,9 @@
                 </div>
             </div>
         </div>
-        <div class="d-grid gap-2">
-            <a class="btn btn-outline-light" href="https://s113.labagh.pl/index.html?page=settings&asidefirst=informationsettings&asidesecond=not">Settings</a>
-        </div>
     </div>
 </div>
-<div class="card">
-    <div class="card-header">
-        Navigation
-    </div>
-    <div class="card-body">
-        <div class="btn-group d-flex" role="group">
-            <button class="btn btn-outline-light fav" type="submit">Favourite</button>
-            <button class="btn btn-outline-light fav active" type="submit">Added</button>
-        </div>
-    </div>
-</div>
+
 <script>
     var mydata = {"Login":"test1", "Name": "imie1", "Age": 20, "FPftIcount": 1, "Total": 0};
     var table = $( ".insert" );
@@ -64,13 +51,4 @@
     table[2].append(mydata.Age);
     table[3].append(mydata.FPftIcount);
     table[4].append(mydata.Total);
-
-    var fav = document.getElementsByClassName('fav');
-    for (var i = 0; i < fav.length; i++) {
-        fav[i].addEventListener("click", function() {
-            var current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-            this.className += " active";
-        });
-    } 
 </script>

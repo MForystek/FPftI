@@ -35,6 +35,8 @@ $(function(){
         $("#aside-first").load("https://s113.labagh.pl/frontend/subdomains/add-fpfti.html");
     } else if (result === "information") {
         $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/information.html");
+    } else if (result === "informationsettings") {
+        $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/informationsettings.html");
     } else if (result === "addfpfti") {
         $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/add-fpfti.html");
     } else if (result === "remove") {
