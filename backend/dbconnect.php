@@ -14,4 +14,3 @@
     } else {
         exit("Database configuration not found.");
     }
-?>

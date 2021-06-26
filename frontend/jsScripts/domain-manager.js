@@ -38,4 +38,24 @@ $(function(){
     } else {
         $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/oops.html");
     }
+
+    result = findGetParameter("mess");
+    if (result === "uploadsuccess") {
+        window.alert("Your FPftI was uploaded successfully!");
+        
+    } else if (result === "notitle") {
+        window.alert("Your FPftI must have the title");
+    } else if (result === "nofpfti") {
+        window.alert("Your FPftI must include the FPftI");
+    } else if (result === "wrongext") {
+        window.alert("Extension of your FPftI in not allowed");
+    } else if (result === "nofpfti") {
+        window.alert("Your FPftI must include the FPftI");
+    } else if (result === "uploaderror") {
+        window.alert("Some error has occured during the upload");
+    } else if (result === "toobig") {
+        window.alert("Your FPftI is greater than 10MB. We don't have enough money for this kind of luxury");
+    } else if (result === "error") {
+        window.alert("Some other error has occured");
+    }
 });

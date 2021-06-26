@@ -18,4 +18,3 @@
     } else {
         print '<p style="font-weight: bold; color: red;">Wrong data!</p>';
     }	
-?>
