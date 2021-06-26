@@ -17,7 +17,7 @@
                 if (in_array($fileActualExt, $allowed)) {
                     if ($fileError === 0) {
                         if ($fileSize < 10_485_760) {
-                            include('dbconnect.php');
+                            include('./includes/dbconnect.inc.php');
                 
                             $fpfti_title = htmlspecialchars($_POST['title']);
                             $fpfti_tags = htmlspecialchars($_POST['tags']);

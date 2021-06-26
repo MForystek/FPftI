@@ -1,20 +1,25 @@
 <?php	
-    include('dbconnect.php');
-    if (isset($_POST["login"]) && isset($_POST["password"]) && isset($_POST["repassword"])) { //&& $_POST['g-recaptcha-response']) {
-        if ($_POST['password'] === $_POST['repassword']) {
-            $register_login = htmlspecialchars($_POST['login']);
-            $register_password = password_hash(htmlspecialchars($_POST['password']), PASSWORD_DEFAULT);
-            try {
-                $stmt = $dbh->prepare('INSERT INTO users (id, login, password, created, name, isadmin) 
-                                        VALUES (null, :login, :password, NOW(), null, 0)');
-                $stmt->execute([':login' => $register_login, ':password' => $register_password]);
-                print '<span style="color: green;">Congratulations, you have an account now!</span>';
-            } catch (PDOException $e) {
-                print '<span style="color: red;">This login is already used!</span>';
-            }    
+    if (isset($_POST["regbutton"])) {
+        include('./includes/dbconnect.inc.php');
+        if (isset($_POST["reglogin"]) && isset($_POST["regpassword"]) && isset($_POST["regrepassword"])) { //&& $_POST['g-recaptcha-response']) {
+            if (strlen($_POST["reglogin"]) > 0 && strlen($_POST["regpassword"]) > 0) {
+                if ($_POST['regpassword'] === $_POST['regrepassword']) {
+                    $register_login = htmlspecialchars($_POST['reglogin']);
+                    $register_password = password_hash(htmlspecialchars($_POST['regpassword']), PASSWORD_DEFAULT);
+                    try {
+                        $stmt = $dbh->prepare('INSERT INTO users (login, password) VALUES (:login, :password)');
+                        $stmt->execute([':login' => $register_login, ':password' => $register_password]);
+                        header("Location: https://s113.labagh.pl/index.html?page=main&mess=registrationsuccess");
+                    } catch (PDOException $e) {
+                        header("Location: https://s113.labagh.pl/index.html?page=main&mess=error");
+                    }    
+                } else {
+                    header("Location: https://s113.labagh.pl/index.html?page=main&mess=passwordthesame");
+                }
+            } else {
+                header("Location: https://s113.labagh.pl/index.html?page=main&mess=tooshort");
+            }
         } else {
-            print '<p style="font-weight: bold; color: red;">Passwords must be the same!</p>';
-        }
-    } else {
-        print '<p style="font-weight: bold; color: red;">Wrong data!</p>';
-    }	
+            header("Location: https://s113.labagh.pl/index.html?page=main&mess=formnotfilled");
+        }	
+    }

@@ -55,6 +55,14 @@ $(function(){
         window.alert("Some error has occured during the upload");
     } else if (result === "toobig") {
         window.alert("Your FPftI is greater than 10MB. We don't have enough money for this kind of luxury");
+    } else if (result === "registrationsuccess") {
+        window.alert("Your account was registered successfully. Now try to login in!");
+    } else if (result === "passwordthesame") {
+        window.alert("Repeat password doesn't match to Password");
+    } else if (result === "formnotfilled") {
+        window.alert("Too less information provided");
+    } else if (result === "tooshort") {
+        window.alert("Provided login or password is too short");
     } else if (result === "error") {
         window.alert("Some other error has occured");
     }

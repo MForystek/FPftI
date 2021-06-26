@@ -1,5 +1,5 @@
 <?php
-    include("dbconfig.inc.php");
+    include("./dbconfig.inc.php");
 
     if (isset($config) && is_array($config)) {
 
