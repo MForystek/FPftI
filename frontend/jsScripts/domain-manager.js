@@ -42,7 +42,6 @@ $(function(){
     result = findGetParameter("mess");
     if (result === "uploadsuccess") {
         window.alert("Your FPftI was uploaded successfully!");
-        
     } else if (result === "notitle") {
         window.alert("Your FPftI must have the title");
     } else if (result === "nofpfti") {
@@ -63,6 +62,10 @@ $(function(){
         window.alert("Too less information provided");
     } else if (result === "tooshort") {
         window.alert("Provided login or password is too short");
+    } else if (result === "wronglogpass") {
+        window.alert("Provided login or password is wrong");
+    } else if (result === "loginsuccess") {
+        window.alert("Logged in successfully!");
     } else if (result === "error") {
         window.alert("Some other error has occured");
     }
