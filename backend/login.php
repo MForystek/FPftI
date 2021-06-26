@@ -1,20 +1,22 @@
 <?php	
-    include('./includes/dbconnect.inc.php');
-    if ($_POST["login"] && $_POST["password"]) { //&& $_POST['g-recaptcha-response']) {
-        try{
-            $login = htmlspecialchars($_POST["login"]);
-            $password = htmlspecialchars($_POST["password"]);
-            $stmt = $dbh->prepare("SELECT * FROM users WHERE login = :login");
-            $stmt->execute([':login' => $login]);
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            if($user && $user['password'] === password_hash($password, PASSWORD_DEFAULT)){
-                print '<span style="color: red;">Hasło pasuje, tu trzeba jakieś logowanie zrobić!</span>';
-            }else{
-                print '<span style="color: red;">Niepoprawne hasło, nie wiem co z tym faktem chcemy robić </span>';
-            }
-        } catch (PDOException $e) {
-            print '<span style="color: red;">Nie wiem co zrobiliście że zepsuliście tego if\'a...</span>';
-        }  
-    } else {
-        print '<p style="font-weight: bold; color: red;">Wrong data! Nie wpisane hasło lub login.</p>';
+    if (isset($_POST["logbutton"])) {
+        if (isset($_POST["login"]) && isset($_POST["password"])) { //&& $_POST['g-recaptcha-response']) {
+            include('./includes/dbconnect.inc.php');
+            try{
+                $login = htmlspecialchars($_POST["login"]);
+                $password = htmlspecialchars($_POST["password"]);
+                $stmt = $dbh->prepare("SELECT * FROM users WHERE login = :login");
+                $stmt->execute([':login' => $login]);
+                $user = $stmt->fetch(PDO::FETCH_ASSOC);
+                if($user && password_verify($password, $user['password'])) {
+                    header("Location: https://s113.labagh.pl/index.html?page=main&mess=loginsuccess");
+                }else{
+                    header("Location: https://s113.labagh.pl/index.html?page=main&mess=wronglogpass");
+                }
+            } catch (PDOException $e) {
+                header("Location: https://s113.labagh.pl/index.html?page=main&mess=error");
+            }  
+        } else {
+            header("Location: https://s113.labagh.pl/index.html?page=main&mess=formnotfilled");
+        }
     }

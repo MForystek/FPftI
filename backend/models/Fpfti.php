@@ -26,4 +26,12 @@
             $stmt->execute();
             return $stmt;
         }
+
+        public function read_page($number){
+            $first = ($number - 1)*5;
+            $query = 'SELECT * FROM ' . $this->table . ' f ORDER BY f.created DESC LIMIT ' . $first . ', 5';
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
     }
