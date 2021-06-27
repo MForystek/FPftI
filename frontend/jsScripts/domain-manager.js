@@ -87,6 +87,8 @@ $(function(){
         window.alert("Provided login or password is wrong");
     } else if (result === "tagtoolong") {
         window.alert("Tags must be shorter than or equql to 64 characters (including '#')");
+    } else if (result === "wrongtag") {
+        window.alert("One or more provided tags have incorrect format");
     } else if (result === "error") {
         window.alert("Some other error has occured");
     }

@@ -3,9 +3,11 @@
         
         if (!isset($_POST["title"])) {
             header("Location: https://s113.labagh.pl/index.html?page=profile&mess=nofpfti");
+            exit();
         }
         if(!isset($_FILES["fpfti-image"])) { //&& $_POST['g-recaptcha-response']) { //TODO
             header("Location: https://s113.labagh.pl/index.html?page=profile&mess=wrongext");
+            exit();
         }
         
         $ftpFile = $_FILES['fpfti-image'];
@@ -22,12 +24,15 @@
 
         if (!in_array($fileActualExt, $allowed)) {
             header("Location: https://s113.labagh.pl/index.html?page=profile&mess=uploaderror");
+            exit();
         }
         if (!($fileError === 0)) {
             header("Location: https://s113.labagh.pl/index.html?page=profile&mess=error");
+            exit();
         }
         if (!($fileSize < 10_485_760)) {
             header("Location: https://s113.labagh.pl/index.html?page=profile&mess=toobig");
+            exit();
         }
 
         include('./includes/dbconnect.inc.php');
@@ -40,9 +45,11 @@
         foreach($keys as $key) {
             if (mb_strlen($fpfti_tags_array[$key]) > 64) {
                 header("Location: https://s113.labagh.pl/index.html?page=profile&mess=tagtoolong");
+                exit();
             }
             if ($fpfti_tags_array[$key][0] !== '#' || mb_strlen($fpfti_tags_array[$key]) <= 1) {
-                unset($fpfti_tags_array[$key]);
+                header("Location: https://s113.labagh.pl/index.html?page=profile&mess=wrongtag");
+                exit();
             }
         }
 
