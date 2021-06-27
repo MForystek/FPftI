@@ -14,14 +14,14 @@
 </nav>
 <script>
     $.ajax({
-        url: "https://s113.labagh.pl/backend/api/fpfti/read_page.php?page=1",
+        url: "https://s113.labagh.pl/backend/api/fpfti/read_main.php?page=1",
         type: "GET",
         dataType : "text",
     })
     .done(function( json ) {
         var tablica_json = JSON.parse(json);
         jQuery.each(tablica_json.data, function() {
-            template(this.image, this.user_id, this.title, this.id, this.likes, ".fpfti-template");
+            template(this.link, this.user_id, this.title, this.id, this.likes, ".fpfti-template");
         });
     })
     .fail(function( xhr, status, errorThrown ) {
