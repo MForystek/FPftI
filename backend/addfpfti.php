@@ -18,7 +18,7 @@
         $fileExt = explode('.', $fileName);
         $fileActualExt = strtolower(end($fileExt));
 
-        $allowed = array('jpg', 'jpeg', 'png', 'webm', 'gif');
+        $allowed = array('jpg', 'jpeg', 'png', 'gif');
 
         if (!in_array($fileActualExt, $allowed)) {
             header("Location: https://s113.labagh.pl/index.html?page=profile&mess=uploaderror");
@@ -29,23 +29,57 @@
         if (!($fileSize < 10_485_760)) {
             header("Location: https://s113.labagh.pl/index.html?page=profile&mess=toobig");
         }
+
         include('./includes/dbconnect.inc.php');
 
         $fpfti_title = htmlspecialchars($_POST['title']);
         $fpfti_tags = htmlspecialchars($_POST['tags']);
         $fpfti_tags_array = explode(' ', $fpfti_tags);
-        
+        $fpfti_tags_array = array_unique($fpfti_tags_array, SORT_REGULAR);
+        $keys = array_keys($fpfti_tags_array);
+        foreach($keys as $key) {
+            if (mb_strlen($fpfti_tags_array[$key]) > 64) {
+                header("Location: https://s113.labagh.pl/index.html?page=profile&mess=tagtoolong");
+            }
+            if ($fpfti_tags_array[$key][0] !== '#' || mb_strlen($fpfti_tags_array[$key]) <= 1) {
+                unset($fpfti_tags_array[$key]);
+            }
+        }
+
         $fileNameNew = uniqid('', true).".".$fileActualExt;
         $fileDestination = '../resources/fpfti/'.$fileNameNew;
         $fpfti_link = 'https://s113.labagh.pl/resources/fpfti/' . $fileNameNew;
+        
         try {
             $stmt = $dbh->prepare('INSERT INTO fpfti (title, link) VALUES (:title, :link)');
             $stmt->execute([':title' => $fpfti_title, ':link' => $fpfti_link]);
             
-            move_uploaded_file($fileTmpName, $fileDestination);
+            if (!empty($fpfti_tags_array)) {
+                $stmt2 = $dbh->prepare('SELECT id FROM fpfti ORDER BY id DESC LIMIT 1');
+                $stmt2->execute();
+                $fpfti_id = $stmt2->fetch(PDO::FETCH_ASSOC);
+                $query = 'INSERT INTO tags (tag, fpfti_id) VALUES ';
+                $to_query = '';
+                $to_execute = array();
 
+                $ite = 0;
+                foreach($fpfti_tags_array as $value) {
+                    $to_query .= '(:tag' . $ite . ', :fpfti_id' . $ite . '), ';
+                    $to_execute[':tag'.$ite] = $value;
+                    $to_execute[':fpfti_id'.$ite] = $fpfti_id['id'];
+                    $ite += 1;
+                }
+
+                $to_query = mb_substr($to_query, 0, -2);
+                $query .= $to_query;
+                $stmt3 = $dbh->prepare($query);
+                $stmt3->execute($to_execute);
+            }
+
+            move_uploaded_file($fileTmpName, $fileDestination);
             header("Location: https://s113.labagh.pl/index.html?page=profile&mess=uploadsuccess");
         } catch (PDOException $e) {
+            echo $e;
             header("Location: https://s113.labagh.pl/index.html?page=profile&mess=error");
         }
     }
