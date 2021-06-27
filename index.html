@@ -15,11 +15,12 @@
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
         <script src="./frontend/jsScripts/domain-manager.js"></script>
         <script src="./frontend/jsScripts/fpfti-templates.js"></script>
+        <script src="./frontend/jsScripts/login-check.js"></script>
         
         <title>FPftI grupa s113</title>
     </head>
 
-    <body>       
+    <body>      
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="./index.html">FPftI</a>
@@ -29,21 +30,12 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="navigation">
                         <li class="nav-item">
                             <a class="nav-link" href="./index.html?page=main">Main</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="./index.html?page=waiting">Waiting</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="./index.html?page=top">Top10</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./index.html?page=profile">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./index.html?page=admin">AdminPanel</a>
                         </li>
                     </ul>
                     <form action="https://s113.labagh.pl" class="d-flex" method="POST">
@@ -61,12 +53,30 @@
                 </div>
                 <div class="col-lg-4">
                     <div id="aside-first"></div>
+                    
                     <div id="aside-second"></div>
-                    <div id="aside-third"></div>
                 </div>
             </div>
         </div>      
 <!-- End of the unique content of subdomains-->
         <footer class="card-footer">WWWiJS - Project 2021 MFSSAJ</footer>
     </body>
+    <script>
+        check_session().then(function(session) {
+            if (session === 1) {
+                $("#navigation").append('' +
+                    '<li class="nav-item">' +
+                        '<a class="nav-link" href="./index.html?page=waiting">Waiting</a>' +
+                    '</li>' +
+                    '<li class="nav-item">' +
+                        '<a class="nav-link" href="./index.html?page=profile">Profile</a>' +
+                    '</li>' +
+                    '<li class="nav-item">' +
+                        '<a class="nav-link" href="./index.html?page=admin">AdminPanel</a>' +
+                    '</li>');
+            }
+        }).catch(function(err) {
+            console.log(err)
+        })
+    </script>
 </html>
