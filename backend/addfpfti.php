@@ -7,7 +7,7 @@
         if(!isset($_FILES["fpfti-image"])) { //&& $_POST['g-recaptcha-response']) { //TODO
             header("Location: https://s113.labagh.pl/index.html?page=profile&mess=wrongext");
         }
-        //
+        
         $ftpFile = $_FILES['fpfti-image'];
         $fileName = $ftpFile['name'];
         $fileTmpName = $ftpFile['tmp_name'];
@@ -34,6 +34,7 @@
         $fpfti_title = htmlspecialchars($_POST['title']);
         $fpfti_tags = htmlspecialchars($_POST['tags']);
         $fpfti_tags_array = explode(' ', $fpfti_tags);
+        
         $fileNameNew = uniqid('', true).".".$fileActualExt;
         $fileDestination = '../resources/fpfti/'.$fileNameNew;
         $fpfti_link = 'https://s113.labagh.pl/resources/fpfti/' . $fileNameNew;

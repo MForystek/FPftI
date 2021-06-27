@@ -2,7 +2,7 @@
     if (isset($_POST['fpfti-remove'])) { // NAZWA DO USTALENIA TODO
         //getting OP id
         $stmt2 = $dbh->prepare("SELECT user_id FROM fpfti WHERE id = :fpfti_id");
-        $stmt2->execute([':id' => $_POST['fpfti_id']]);
+        $stmt2->execute([':fpfti_id' => $_POST['fpfti-id']]);
         $poster_id = $stmt2->fetch(PDO::FETCH_ASSOC);
 
         //getting current user info
@@ -14,16 +14,16 @@
             if($id === $poster_id || $is_admin === 1){
                 //deleting fpfti's tags
                 $delete_stmt = $dbh->prepare("DELETE * FROM tags WHERE fpfti_id = :id");
-                $delete_stmt->execute([':id' => $_POST['fpfti_id']]);
+                $delete_stmt->execute([':id' => $_POST['fpfti-id']]);
                 //deleting fpfti's likes
                 $delete_stmt = $dbh->prepare("DELETE * FROM likes WHERE fpfti_id = :id");
-                $delete_stmt->execute([':id' => $_POST['fpfti_id']]);                
+                $delete_stmt->execute([':id' => $_POST['fpfti-id']]);                
                 //deleting fpfti's comments
                 $delete_stmt = $dbh->prepare("DELETE * FROM comments WHERE fpfti_id = :id");
-                $delete_stmt->execute([':id' => $_POST['fpfti_id']]);
+                $delete_stmt->execute([':id' => $_POST['fpfti-id']]);
                 //deleting fpfti
                 $delete_stmt = $dbh->prepare("DELETE * FROM fpfti WHERE id = :id");
-                $delete_stmt->execute([':id' => $_POST['fpfti_id']]);
+                $delete_stmt->execute([':id' => $_POST['fpfti-id']]);
                 //TUTAJ JAKIŚ HEADER ŻE POMYŚLNIE USUNIĘTO TODO
             } else {
                 //TU NIE WIEM CZY TO W OGÓLE JEST POTRZEBNE TODO
