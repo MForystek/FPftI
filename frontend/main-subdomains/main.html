@@ -13,5 +13,19 @@
     </ul>
 </nav>
 <script>
-    template("https://s113.labagh.pl/resources/najazdNaRosje.png", "Filoman", "Russia is good in winter", 2, -45, "yes", ".fpfti-template");
+    $.ajax({
+        url: "https://s113.labagh.pl/backend/api/fpfti/read.php",
+        type: "GET",
+        dataType : "text",
+    })
+    .done(function( json ) {
+        var tablica_json = JSON.parse(json);
+        jQuery.each(tablica_json.data, function() {
+            template(this.image, this.user_id, this.title, this.id, this.likes, "yes", ".fpfti-template");
+        });
+    })
+    .fail(function( xhr, status, errorThrown ) {
+        alert("Nie udalo sie pobrac danych.");
+    });
+    //template("https://s113.labagh.pl/resources/najazdNaRosje.png", "Filoman", "Russia is good in winter", 2, -45, "yes", ".fpfti-template");
 </script>
