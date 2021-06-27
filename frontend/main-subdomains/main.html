@@ -21,11 +21,10 @@
     .done(function( json ) {
         var tablica_json = JSON.parse(json);
         jQuery.each(tablica_json.data, function() {
-            template(this.image, this.user_id, this.title, this.id, this.likes, "yes", ".fpfti-template");
+            template(this.image, this.user_id, this.title, this.id, this.likes, ".fpfti-template");
         });
     })
     .fail(function( xhr, status, errorThrown ) {
         alert("Data not found");
     });
-    //template("https://s113.labagh.pl/resources/najazdNaRosje.png", "Filoman", "Russia is good in winter", 2, -45, "yes", ".fpfti-template");
 </script>
