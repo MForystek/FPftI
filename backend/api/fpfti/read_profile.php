@@ -32,7 +32,7 @@
                 'login' => $login,
                 'name' => $name,
                 'age' => $age,
-                'id_admin' => $id_admin,
+                'is_admin' => $is_admin,
                 'created' => $created
 
             );
