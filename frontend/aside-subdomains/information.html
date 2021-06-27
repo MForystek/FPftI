@@ -32,13 +32,6 @@
                 <div class="col insert">
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    Total likes 
-                </div>
-                <div class="col insert">
-                </div>
-            </div>
         </div>
         <div class="d-grid gap-2">
             <a class="btn btn-outline-light" href="https://s113.labagh.pl/index.html?page=settings">Settings</a>
@@ -57,13 +50,12 @@
     </div>
 </div>
 <script>
-    var mydata = {"Login":"test1", "Name": "imie1", "Age": 20, "FPftIcount": 1, "Total": 0};
+    var mydata = {"Login":"test1", "Name": "imie1", "Age": 20, "FPftIcount": 1};
     var table = $( ".insert" );
     table[0].append(mydata.Login);
     table[1].append(mydata.Name);
     table[2].append(mydata.Age);
     table[3].append(mydata.FPftIcount);
-    table[4].append(mydata.Total);
 
     var fav = document.getElementsByClassName('fav');
     for (var i = 0; i < fav.length; i++) {
