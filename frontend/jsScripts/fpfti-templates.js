@@ -24,11 +24,11 @@ function addTagsHTML(purpose) {
     return "";
 }
 
-function template(pic, op, title, id, likeCount, verified, classs, purpose) {
+function template(pic, op, title, id, likeCount, classs, purpose) {
+    var link = '"https://s113.labagh.pl/index.html?page=fpfti&pic=' + pic + '&op=' + op + '&title=' + title + '&likeCount=' + likeCount + '&verified=' + verified + '">';
     var temp = 
         '<div class="card">' +
-            '<a href="https://s113.labagh.pl/index.html?page=fpfti">' +
-                //podmienic linka ale nwm na jakiego
+            '<a href=' + link +
                 '<div class="card-header">' +
                     '<h5>' + title + '</h5>' +
                 '</div>' +
@@ -41,7 +41,7 @@ function template(pic, op, title, id, likeCount, verified, classs, purpose) {
                     'Id: ' + id +
                 '</span>' +
                     
-                '<a href="https://s113.labagh.pl/index.html?page=fpfti">' +
+                '<a href=' + link +
                     '<div class="d-flex justify-content-evenly p-2">' +
                         '<img src="' + pic + '" class="img-fluid">' +
                     '</div>' +
