@@ -16,13 +16,17 @@
                     $_SESSION['is_admin'] = $user['is_admin'];
                     session_write_close();
                     header("Location: https://s113.labagh.pl/index.html?page=main");
+                    exit();
                 }else{
                     header("Location: https://s113.labagh.pl/index.html?page=main&mess=wronglogpass");
+                    exit();
                 }
             } catch (PDOException $e) {
                 header("Location: https://s113.labagh.pl/index.html?page=main&mess=error");
+                exit();
             }  
         } else {
             header("Location: https://s113.labagh.pl/index.html?page=main&mess=formnotfilled");
+            exit();
         }
     }

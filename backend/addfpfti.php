@@ -35,8 +35,6 @@
             exit();
         }
 
-        include('./includes/dbconnect.inc.php');
-
         $fpfti_title = htmlspecialchars($_POST['title']);
         $fpfti_tags = htmlspecialchars($_POST['tags']);
         $fpfti_tags_array = explode(' ', $fpfti_tags);
@@ -55,11 +53,15 @@
 
         $fileNameNew = uniqid('', true).".".$fileActualExt;
         $fileDestination = '../resources/fpfti/'.$fileNameNew;
-        $fpfti_link = 'https://s113.labagh.pl/resources/fpfti/' . $fileNameNew;
+        $fpfti_link = 'https://s113.labagh.pl/resources/fpfti/'.$fileNameNew;
         
         try {
-            $stmt = $dbh->prepare('INSERT INTO fpfti (title, link) VALUES (:title, :link)');
-            $stmt->execute([':title' => $fpfti_title, ':link' => $fpfti_link]);
+            include('./includes/dbconnect.inc.php');
+
+            session_start();
+
+            $stmt = $dbh->prepare('INSERT INTO fpfti (title, user_id, link) VALUES (:title, :user_id, :link)');
+            $stmt->execute([':title' => $fpfti_title, ':user_id' => $_SESSION['id'], ':link' => $fpfti_link]);
             
             if (!empty($fpfti_tags_array)) {
                 $stmt2 = $dbh->prepare('SELECT id FROM fpfti ORDER BY id DESC LIMIT 1');
@@ -86,7 +88,6 @@
             move_uploaded_file($fileTmpName, $fileDestination);
             header("Location: https://s113.labagh.pl/index.html?page=profile&mess=uploadsuccess");
         } catch (PDOException $e) {
-            echo $e;
             header("Location: https://s113.labagh.pl/index.html?page=profile&mess=error");
         }
     }

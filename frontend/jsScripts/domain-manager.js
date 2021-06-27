@@ -89,6 +89,10 @@ $(function(){
         window.alert("Tags must be shorter than or equql to 64 characters (including '#')");
     } else if (result === "wrongtag") {
         window.alert("One or more provided tags have incorrect format");
+    } else if (result === "fpftideleted") {
+        window.alert("FPftI of given Id was deleted successfully");
+    } else if (result === "accessdeny") {
+        window.alert("You are not allowed to do that!");
     } else if (result === "error") {
         window.alert("Some other error has occured");
     }
