@@ -1,8 +1,8 @@
 <?php
     if (isset($_POST['comment-remove'])) { // NAZWA DO USTALENIA TODO
         //getting OP id
-        $stmt2 = $dbh->prepare("SELECT user_id FROM fpfti WHERE id = :fpfti_id");
-        $stmt2->execute([':fpfti_id' => $_POST['fpfti-id']]);
+        $stmt2 = $dbh->prepare("SELECT user_id FROM comments WHERE id = :comment_id");
+        $stmt2->execute([':comment_id' => $_POST['comment-id']]);
         $poster_id = $stmt2->fetch(PDO::FETCH_ASSOC);
 
         //getting current user info
