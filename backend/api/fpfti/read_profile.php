@@ -14,37 +14,37 @@
     $fpfti = new Fpfti($db);
 
     //query
-    $result = $fpfti->read();
+    $user_id = isset($_GET['user_id']) ? $_GET['user_id'] : die();
+    $result = $fpfti->read_profile($user_id);
     //get row count
     $num = $result->rowCount();
 
     //check if any fpfti
     if($num > 0) {
         //Post array
-        $fpfti_arr = array();
-        $fpfti_arr['data'] = array();
+        $user = array();
+        $user['data'] = array();
 
         while($row = $result->fetch(PDO::FETCH_ASSOC)) {
             extract($row);
-            $fpfti_item = array(
+            $user_item = array(
                 'id' => $id,
-                'title' => $title,
-                'user_id' => $user_id,
-                'image' => html_entity_decode($image),
-                'accepted' => $accepted,
-                'likes' => $likes,
+                'login' => $login,
+                'name' => $name,
+                'age' => $age,
+                'id_admin' => $id_admin,
                 'created' => $created
 
             );
 
             //Push to "data"
-            array_push($fpfti_arr['data'], $fpfti_item);
+            array_push($user['data'], $user_item);
         }
 
         //Turn to JSON & output
-        echo json_encode($fpfti_arr);
+        echo json_encode($user);
     } else {
         echo json_encode(
-            array('message' => 'No fpfti found')
+            array('message' => 'No user found')
         );
     }

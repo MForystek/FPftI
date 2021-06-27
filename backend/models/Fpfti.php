@@ -4,34 +4,9 @@
         private $conn;
         private $table = 'fpfti';
 
-        //fpfti properties
-        public $id;
-        public $title;
-        public $user_id;
-        public $link;
-        public $accepted;
-        public $likes;
-        public $created;
-
         //Constructor with DB
         public function __construct($db) {
             $this->conn = $db;
-        }
-
-        public function read() {
-            //Create query
-            $query = 'SELECT * FROM ' . $this->table . ' f ORDER BY f.created DESC';
-            $stmt = $this->conn->prepare($query);
-            $stmt->execute();
-            return $stmt;
-        }
-
-        public function read_page($number){
-            $first = ($number - 1)*5;
-            $query = 'SELECT * FROM ' . $this->table . ' f ORDER BY f.created DESC LIMIT ' . $first . ', 5';
-            $stmt = $this->conn->prepare($query);
-            $stmt->execute();
-            return $stmt;
         }
 
         public function read_waiting($number){
@@ -52,6 +27,20 @@
 
         public function read_top10(){
             $query = 'SELECT * FROM ' . $this->table . ' f ORDER BY f.likes DESC LIMIT 10';
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+
+        public function read_profile($user_id){
+            $query = 'SELECT * FROM users u WHERE id = ' . $user_id . '';
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+
+        public function read_user_fpfti($user_id){
+            $query = 'SELECT * FROM ' . $this->table . ' f WHERE user_id = ' . $user_id . '';
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;
