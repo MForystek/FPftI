@@ -14,7 +14,7 @@
     $fpfti = new Fpfti($db);
 
     //query
-    $number = isset($_GET['id']) ? $_GET['id'] : die();
+    $number = isset($_GET['page']) ? $_GET['page'] : die();
     $result = $fpfti->read_page($number);
     //get row count
     $num = $result->rowCount();
