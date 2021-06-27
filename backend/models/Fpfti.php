@@ -38,4 +38,11 @@
             $stmt->execute();
             return $stmt;
         }
+
+        public function read_user_fpfti($user_id){
+            $query = 'SELECT * FROM ' . $this->table . ' f WHERE user_id = ' . $user_id . '';
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
     }
