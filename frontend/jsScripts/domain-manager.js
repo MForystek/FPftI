@@ -9,35 +9,56 @@ function findGetParameter(parameterName) {
 }
 
 $(function(){
-    result = findGetParameter("page"); 
-    if (result === null || result === "main") {
-        $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/main.html");
-        $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/login.html");
-        $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/registration.html");
-    } else if (result === "waiting") {
-        $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/waiting.html");
-        $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/add-fpfti.html");
-        $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/sleeping-reaper.html");
-    } else if (result === "top") {
-        $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/main.html");
-        $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/login.html");
-        $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/registration.html");
-    } else if (result === "profile") {
-        $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/profile.html");
-        $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/information.html");
-        $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/add-fpfti.html");
-    } else if (result === "admin") {
-        $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/admin.html");
-        $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/remove.html");
-        $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/deadly-reaper.html");
-    } else if (result === "settings") {
-        $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/settings.html");
-        $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/information-settings.html");
-    } else if (result === "fpfti") {
-        $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/fpfti.html");
-    } else {
-        $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/oops.html");
-    }
+    check_session().then(function(session) {
+        var result = findGetParameter("page"); 
+        if (session === 0) {
+            if (result === null || result === "main") {
+                $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/main.html");
+                $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/login.html");
+                $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/registration.html");
+            } else if (result === "top") {
+                $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/top.html");
+                $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/login.html");
+                $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/registration.html");
+            } else if (result === "fpfti") {
+                $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/fpfti.html");
+                $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/login.html");
+                $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/registration.html");
+            } else {
+                $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/oops.html");
+            }
+        }
+        if (session === 1 || session === 2) {
+            if (result === null || result === "main") {
+                $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/main.html");
+                $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/sleeping-reaper.html");
+            } else if (result === "top") {
+                $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/top.html");
+                $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/sleeping-reaper.html");
+            } else if (result === "fpfti") {
+                $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/fpfti.html");
+                $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/sleeping-reaper.html");
+            } else if (result === "waiting") {
+                $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/waiting.html");
+                $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/sleeping-reaper.html");
+            } else if (result === "profile") {
+                $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/profile.html");
+                $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/information.html");
+                $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/add-fpfti.html");
+            } else if (result === "settings") {
+                $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/settings.html");
+                $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/information-settings.html");
+            } else if (result === "admin" && session === 2) {
+                $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/admin.html");
+                $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/remove.html");
+                $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/deadly-reaper.html");
+            } else {
+                $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/oops.html");
+            }
+        }
+    }).catch(function(err) {
+        console.log(err)
+    });  
 
     result = findGetParameter("mess");
     if (result === "uploadsuccess") {
@@ -64,8 +85,6 @@ $(function(){
         window.alert("Provided login or password is too short");
     } else if (result === "wronglogpass") {
         window.alert("Provided login or password is wrong");
-    } else if (result === "loginsuccess") {
-        window.alert("Logged in successfully!");
     } else if (result === "error") {
         window.alert("Some other error has occured");
     }

@@ -59,3 +59,7 @@ nav .pagination .page-item .page-link {
 #my-list {
     background-color: hsl(123, 50%, 10%);
 }
+
+#logout-form {
+    padding: 0px 5px 0 5px;
+}

@@ -13,8 +13,9 @@
                     session_start();
                     $_SESSION['id'] = $user['id'];
                     $_SESSION['login'] = $user['login'];
+                    $_SESSION['is_admin'] = $user['is_admin'];
                     session_write_close();
-                    header("Location: https://s113.labagh.pl/index.html?page=main&mess=loginsuccess");
+                    header("Location: https://s113.labagh.pl/index.html?page=main");
                 }else{
                     header("Location: https://s113.labagh.pl/index.html?page=main&mess=wronglogpass");
                 }
