@@ -15,7 +15,7 @@
 
     //query
     $number = isset($_GET['page']) ? $_GET['page'] : die();
-    $result = $fpfti->read_page($number);
+    $result = $fpfti->read_waiting($number);
     //get row count
     $num = $result->rowCount();
 

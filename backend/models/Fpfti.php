@@ -8,7 +8,7 @@
         public $id;
         public $title;
         public $user_id;
-        public $image;
+        public $link;
         public $accepted;
         public $likes;
         public $created;
@@ -18,7 +18,6 @@
             $this->conn = $db;
         }
 
-        //Get Fpfti
         public function read() {
             //Create query
             $query = 'SELECT * FROM ' . $this->table . ' f ORDER BY f.created DESC';
@@ -30,6 +29,29 @@
         public function read_page($number){
             $first = ($number - 1)*5;
             $query = 'SELECT * FROM ' . $this->table . ' f ORDER BY f.created DESC LIMIT ' . $first . ', 5';
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+
+        public function read_waiting($number){
+            $first = ($number - 1)*5;
+            $query = 'SELECT * FROM ' . $this->table . ' f WHERE accepted = 0 ORDER BY f.created DESC LIMIT ' . $first . ', 5';
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+
+        public function read_main($number){
+            $first = ($number - 1)*5;
+            $query = 'SELECT * FROM ' . $this->table . ' f WHERE accepted = 1 ORDER BY f.created DESC LIMIT ' . $first . ', 5';
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+
+        public function read_top10(){
+            $query = 'SELECT * FROM ' . $this->table . ' f ORDER BY f.likes DESC LIMIT 10';
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;
