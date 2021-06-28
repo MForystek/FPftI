@@ -25,7 +25,7 @@ function addTagsHTML(purpose) {
 }
 
 function template(pic, op, title, id, likeCount, classs, purpose) {
-    var link = '"https://s113.labagh.pl/index.html?page=fpfti&pic=' + pic + '&op=' + op + '&title=' + title + '&likeCount=' + likeCount + '">';
+    var link = '"https://s113.labagh.pl/index.html?page=fpfti&pic=' + pic + '&op=' + op + '&title=' + title + '&id=' + id + '&likeCount=' + likeCount + '">';
     var temp = 
         '<div class="card">' +
             '<a href=' + link +
