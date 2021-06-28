@@ -110,5 +110,15 @@ $(function(){
         window.alert("The administrator's position was revoked successfully");
     } else if (result === "nosuchuser") {
         window.alert("No such user exists");
+    } else if (result === "userdeleted") {
+        window.alert("User was deleted successfully");
+    } else if (result === "nosuchuser") {
+        window.alert("No such user exists");
+    } else if (result === "notloggedin") {
+        window.alert("You must be signed in to do that");
+    } else if (result === "nosuchfpfti") {
+        window.alert("This FPftI doesn't exist");
+    } else if (result === "fpftiaccepted ") {
+        window.alert("Acceptance was done successfully");
     } 
 });
