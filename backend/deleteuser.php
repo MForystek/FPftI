@@ -1,7 +1,7 @@
 <?php
-    if (isset($_POST['admin-add'])) {
-        try {
-            include('./includes/dbconnect.inc.php');
+    if (isset($_POST['user-remove'])) {
+        try{
+            include("./includes/dbconnect.inc.php");
             session_start();
 
             //getting current user info
@@ -13,9 +13,9 @@
                 $stmt2 = $dbh->prepare("SELECT * FROM users WHERE id = :user_id");
                 $stmt2->execute([':user_id' => $_POST['user-id']]);
                 if ($stmt2->fetch(PDO::FETCH_ASSOC)) {
-                    $stmt3 = $dbh->prepare("UPDATE users SET is_admin = 1 WHERE id = :user_id");
+                    $stmt3 = $dbh->prepare("DELETE FROM users WHERE id = :user_id");
                     $stmt3->execute([':user_id' => $_POST['user-id']]);
-                    header("Location: https://s113.labagh.pl/index.html?page=admin&mess=adminadded");
+                    header("Location: https://s113.labagh.pl/index.html?page=admin&mess=userdeleted");
                     exit();
                 } else {
                     header("Location: https://s113.labagh.pl/index.html?page=admin&mess=nosuchuser");
@@ -23,7 +23,7 @@
                 }
             }
         } catch(PDOException $e) {
-            header("Location: https://s113.labagh.pl/index.html?page=admin&mess=error");
+            header("Location: https://s113.labagh.pl/index.html?page=profile&mess=error");
             exit();
         }
     }
