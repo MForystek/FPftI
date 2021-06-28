@@ -76,7 +76,7 @@
         }
 
         public function read_fpfti_comments($fpfti_id){
-            $query = 'SELECT * FROM comments c WHERE fpfti = '. $fpfti_id . 'ORDER BY f.created DESC';
+            $query = 'SELECT c.*, u.login FROM comments c JOIN users u ON c.user_id = u.id WHERE fpfti_id = ' . $fpfti_id . ' ORDER BY c.created DESC';
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;

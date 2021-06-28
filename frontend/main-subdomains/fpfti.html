@@ -15,6 +15,28 @@
     var id = getContent("id");
     template(pic, op, title, id, like, ".fpfti-template", "details");
 
-    adder(1);
-    comtemplate("test-id", "test-val", "test-usr");
+    //adder(1);
+    
+    var link = 'https://s113.labagh.pl/backend/api/fpfti/read_fpfti_comments.php?fpfti_id=' + id + '';
+    $.ajax({
+        url: link,
+        type: "GET",
+        dataType : "text",
+    })
+    .done(function( json ) {
+
+        var tablica_json = JSON.parse(json);
+        var item = tablica_json.data.shift();
+        adder(item);
+        jQuery.each(tablica_json.data, function() {
+            comtemplate(this.user_id, this.text, this.login);
+        });
+    })
+    .fail(function( xhr, status, errorThrown ) {
+        alert("Data not found");
+    });
+
+
+    addDelButton();
+
 </script>
