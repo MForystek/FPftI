@@ -32,6 +32,13 @@
             return $stmt;
         }
 
+        public function read_fpfti($fpfti_id){
+            $query = 'SELECT * FROM ' . $this->table . ' f WHERE id = ' . $fpfti_id . '';
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+
         public function read_profile($user_id){
             $query = 'SELECT * FROM users u WHERE id = ' . $user_id . '';
             $stmt = $this->conn->prepare($query);
