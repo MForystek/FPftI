@@ -102,7 +102,7 @@ $(function(){
         window.alert("Some other error has occured");
     } else if (result === "commentadded") {
         window.alert("Comment added successfully");
-    }else if (result === "commentdeleted") {
+    } else if (result === "commentdeleted") {
         window.alert("Comment deleted successfully");
     } else if (result === "adminadded") {
         window.alert("The administrator's position was granted successfully");

@@ -36,6 +36,12 @@
         }
 
         $fpfti_title = htmlspecialchars($_POST['title']);
+        if (strlen($fpfti_title) <= 0) {
+            header("Location: https://s113.labagh.pl/index.html?page=profile&mess=notitle");
+            exit();
+
+        }
+        
         $fpfti_tags = htmlspecialchars($_POST['tags']);
         $fpfti_tags_array = explode(' ', $fpfti_tags);
         $fpfti_tags_array = array_unique($fpfti_tags_array, SORT_REGULAR);
