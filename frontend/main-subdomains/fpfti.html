@@ -1,39 +1,20 @@
 <div class="fpfti-template"></div>
-<div class="card">
-    <div class="card-header">
-        <h5>2317 Comments:</h5>
-        <form class="d-flex" method="POST">
-            <input class="form-control me-2" type="search" placeholder="Add your comment...">
-            <button class="btn btn-light" type="submit">Add</button>
-        </form>
-    </div>
-    <div class="card-body">
-        <div class="card bg-transparent">
-            <a href="https://s113.labagh.pl/index.html?page=user2731">
-                <div class="card-header">
-                    <span class="comment-properties">Author: SomeUser2731 | Id: 64546
-                </div>
-            </a>
-            <div class="card-body">
-                <span>Here we have an example of the greatly sophisticaded humor. 2/10 cause this stupid devs didn't add more advanced rating than just like count! Pathetic!!!!!1111!!1!1! </span>
-            </div>
-        </div>
-    </div>
+<div class="card comments">
 </div>
 <script>
-    // function getContent(argument){
-    //     var content = window.location.search;
-    //     const urlParams = new URLSearchParams(content);
-    //     const page_type = urlParams.get(argument);
-    //     return page_type;
-    // }
-    // var pic = getContent("pic");
-    // var op = getContent("op");
-    // var title = getContent("title");
-    // var like = getContent("likeCount");
-    // console.log(pic);
-    // console.log(op)
-    //template(pic, op, title, like, ".fpfti-template", "details");
-    template("", "1", "title", 2, ".fpfti-template", "details");
-    console.log("ocb")
+    function getContent(argument){
+        var content = window.location.search;
+        const urlParams = new URLSearchParams(content);
+        const page_type = urlParams.get(argument);
+        return page_type;
+    }
+    var pic = getContent("pic");
+    var op = getContent("op");
+    var title = getContent("title");
+    var like = getContent("likeCount");
+    var id = getContent("id");
+    template(pic, op, title, id, like, ".fpfti-template", "details");
+
+    adder(1);
+    comtemplate("test-id", "test-val", "test-usr");
 </script>
