@@ -15,7 +15,7 @@ function adder(amount) {
                     '<form action="https://s113.labagh.pl/backend/addcomment.php" class="d-flex" method="POST">' +
                         '<input class="form-control me-2" type="search" name="comment-text" placeholder="Add your comment here...">' +
                         '<input type="hidden" name="fpfti-id" value="' + id + '"></input>' +
-                        '<button class="btn btn-light" name="pcomment-add" type="submit">Add</button>' +
+                        '<button class="btn btn-light" name="comment-add" type="submit">Add</button>' +
                     '</form>' +
                 '</div>';
 
