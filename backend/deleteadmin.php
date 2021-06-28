@@ -14,6 +14,7 @@
                     $delete_stmt = $dbh->prepare("UPDATE users SET is_admin = 0, WHERE id = :user_id");
                     $delete_stmt->execute([':user_id' => $_POST['user-id']]);
                     header("Location: https://s113.labagh.pl/index.html?page=profile&mess=admindeleted");
+                    exit();
                 }
             }
         } catch(PDOException $e) {
