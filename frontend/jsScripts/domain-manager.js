@@ -108,5 +108,7 @@ $(function(){
         window.alert("The administrator's position was granted successfully");
     } else if (result === "admindeleted") {
         window.alert("The administrator's position was revoked successfully");
-    }
+    } else if (result === "nosuchuser") {
+        window.alert("No such user exists");
+    } 
 });
