@@ -39,6 +39,13 @@
             return $stmt;
         }
 
+        public function read_fpfti_tags($fpfti_id){
+            $query = 'SELECT tag FROM tags WHERE fpfti_id = ' . $fpfti_id . '';
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+
         public function read_profile($user_id){
             $query = 'SELECT * FROM users u WHERE id = ' . $user_id . '';
             $stmt = $this->conn->prepare($query);
@@ -54,23 +61,6 @@
         }
 
         public function read_user_likes($user_id){
-            // $query = 'SELECT fpfti_id FROM likes l WHERE user_id = ' . $user_id . '';
-            // $stmt = $this->conn->prepare($query);
-
-            // $fpfti_arr = array();
-            // $fpfti_arr['data'] = array();
-            // while($fpfti_id = $stmt->execute()){
-            //     $query = 'SELECT * FROM ' . $this->table . ' f WHERE fpfti_id = ' . $fpfti_id . '';
-            //     $stmt2 = $this->conn->prepare($query);
-            //     array_push($fpfti_arr['data'], $stmt2->execute());
-            // }
-
-
-            // $query = 'SELECT * FROM ' . $this->table . ' f WHERE user_id = ' . $user_id . '';
-            // $stmt = $this->conn->prepare($query);
-            // $stmt->execute();
-            // return $stmt;
-
             $query = 'SELECT f.id, f.title, f.user_id, f.link, f.accepted, f.likes, f.created
                 FROM fpfti as f
                 JOIN likes as l
