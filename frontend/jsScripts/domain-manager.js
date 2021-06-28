@@ -42,7 +42,12 @@ $(function(){
                 $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/waiting.html");
                 $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/sleeping-reaper.html");
             } else if (result === "profile") {
-                $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/profile.html");
+                var res = findGetParameter("content");
+                if (res === null || res === "added") {
+                    $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/profile.html");
+                } else if (res === "favourite") {
+                    $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/favourite.html");
+                }
                 $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/information.html");
                 $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/add-fpfti.html");
             } else if (result === "settings") {
