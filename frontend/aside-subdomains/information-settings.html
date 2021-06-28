@@ -44,11 +44,25 @@
 </div>
 
 <script>
-    var mydata = {"Login":"test1", "Name": "imie1", "Age": 20, "FPftIcount": 1, "Total": 0};
+    var id = getJSessionId();
+    var link = 'https://s113.labagh.pl/backend/api/fpfti/read_profile.php?user_id=' + id + '';
     var table = $( ".insert" );
-    table[0].append(mydata.Login);
-    table[1].append(mydata.Name);
-    table[2].append(mydata.Age);
-    table[3].append(mydata.FPftIcount);
-    table[4].append(mydata.Total);
+    $.ajax({
+        url: link,
+        type: "GET",
+        dataType : "text",
+    })
+    .done(function( json ) {
+        var tablica_json = JSON.parse(json);
+        jQuery.each(tablica_json.data, function() {
+            table[0].append(this.login);
+            table[1].append(this.name);
+            table[2].append(this.age);
+            //table[3].append(this.FPftIcount);
+        });
+    })
+    .fail(function( xhr, status, errorThrown ) {
+        alert("Data not found");
+    });
+
 </script>
