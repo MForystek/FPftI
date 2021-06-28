@@ -16,28 +16,25 @@
     template(pic, op, title, id, like, ".fpfti-template", "details");
 
     adder(1);
-    comtemplate("15", "test-val2", "1234");
-    comtemplate("16", "test-vzzzzzzal2", "12wwsss34");
-    comtemplate("3", "test", "test");
     
-    // var link = "https://s113.labagh.pl/backend/api/fpfti/read_fpfti_comments.php?fpfti_id=8"
-    // $.ajax({
-    //     url: link,
-    //     type: "GET",
-    //     dataType : "text",
-    // })
-    // .done(function( json ) {
-    //     var json2 = json.slice(1);
-    //     var tablica_json = JSON.parse(json2);
-    //     jQuery.each(tablica_json.data, function() {
-    //         comtemplate(this.user_id, this.text, this.login);
-    //     });
-    // })
-    // .fail(function( xhr, status, errorThrown ) {
-    //     alert("Data not found");
-    // });
+    var link = 'https://s113.labagh.pl/backend/api/fpfti/read_fpfti_comments.php?fpfti_id=' + id + '';
+    $.ajax({
+        url: link,
+        type: "GET",
+        dataType : "text",
+    })
+    .done(function( json ) {
+        
+        var tablica_json = JSON.parse(json);
+        tablica_json.data.shift()
+        jQuery.each(tablica_json.data, function() {
+            comtemplate(this.user_id, this.text, this.login);
+        });
+    })
+    .fail(function( xhr, status, errorThrown ) {
+        alert("Data not found");
+    });
 
-    
 
     addDelButton();
 
