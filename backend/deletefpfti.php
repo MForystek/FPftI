@@ -44,5 +44,6 @@
             exit();
         } catch (PDOException $e) {
             header("Location: https://s113.labagh.pl/index.html?page=profile&mess=error");
+            exit();
         }
     }

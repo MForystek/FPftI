@@ -4,9 +4,9 @@
     </div>
     <div class="card-body">
         <ul class="navbar-nav justify-content-end">
-            <form class="d-flex" method="POST">
-                <input class="form-control me-2" type="text" placeholder="Type username here...">
-                <button class="btn btn-outline-danger" type="submit">REMOVE</button>
+            <form action="https://s113.labagh.pl/backend/deleteuser.php" class="d-flex" method="POST">
+                <input class="form-control me-2" type="number" name="user-id" placeholder="Type user id here...">
+                <button class="btn btn-outline-danger" name="user-remove" type="submit">REMOVE</button>
             </form>
         </ul>
     </div>
@@ -43,9 +43,9 @@
     </div>
     <div class="card-body">
         <ul class="navbar-nav justify-content-end">
-            <form class="d-flex" method="POST">
-                <input class="form-control me-2" type="text" placeholder="Type username here...">
-                <button class="btn btn-outline-warning" type="submit">ASCEND</button>
+            <form action="https://s113.labagh.pl/backend/addadmin.php" class="d-flex" method="POST">
+                <input class="form-control me-2" type="number" name="user-id" placeholder="Type user id here...">
+                <button class="btn btn-outline-warning" name="admin-add" type="submit">ASCEND</button>
             </form>
         </ul>
     </div>
