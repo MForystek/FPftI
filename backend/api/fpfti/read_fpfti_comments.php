@@ -44,7 +44,8 @@
         //Turn to JSON & output
         echo json_encode($comments_arr);
     } else {
-        echo json_encode(
-            array('message' => 'No comments found')
-        );
+        $comments_arr = array();
+        $comments_arr['data'] = array();
+        array_push($comments_arr['data'], 0);
+        echo json_encode($comments_arr);
     }
