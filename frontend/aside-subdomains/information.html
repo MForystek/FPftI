@@ -44,8 +44,8 @@
     </div>
     <div class="card-body">
         <div class="btn-group d-flex" role="group">
-            <button class="btn btn-outline-light fav" type="submit">Favourite</button>
-            <button class="btn btn-outline-light fav active" type="submit">Added</button>
+            <button class="btn btn-outline-light fav" type="submit" id="favourite">Favourite</button>
+            <button class="btn btn-outline-light fav active" type="submit" id="added">Added</button>
         </div>
     </div>
 </div>
@@ -71,15 +71,8 @@
     .fail(function( xhr, status, errorThrown ) {
         alert("Data not found");
     });
-    
-    var fav = document.getElementsByClassName('fav');
-    for (var i = 0; i < fav.length; i++) {
-        fav[i].addEventListener("click", function() {
-            var current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-            this.className += " active";
-        });
-    } 
-    // var pageWhich = document.getElementsByClassName('active');
-    // console.log(pageWhich.innerText);
+
+    actionButtons();
+    activeColor();
+
 </script>
