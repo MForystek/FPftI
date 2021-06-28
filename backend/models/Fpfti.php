@@ -17,8 +17,8 @@
             return $stmt;
         }
 
-        public function read_main($number){
-            $first = ($number - 1)*5;
+        public function read_main($page){
+            $first = ($page - 1)*5;
             $query = 'SELECT * FROM ' . $this->table . ' f WHERE accepted = 1 ORDER BY f.created DESC LIMIT ' . $first . ', 5';
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
@@ -27,6 +27,14 @@
 
         public function read_top10(){
             $query = 'SELECT * FROM ' . $this->table . ' f ORDER BY f.likes DESC LIMIT 10';
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+
+        public function read_admin($page){
+            $first = ($page - 1)*5;
+            $query = 'SELECT * FROM ' . $this->table . ' f WHERE accepted = 0 ORDER BY f.created DESC LIMIT ' . $first . ', 5';
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;
