@@ -95,5 +95,13 @@ $(function(){
         window.alert("You are not allowed to do that!");
     } else if (result === "error") {
         window.alert("Some other error has occured");
+    } else if (result === "commentadded") {
+        window.alert("Comment added successfully");
+    }else if (result === "commentdeleted") {
+        window.alert("Comment deleted successfully");
+    } else if (result === "adminadded") {
+        window.alert("The administrator's position was granted successfully");
+    } else if (result === "admindeleted") {
+        window.alert("The administrator's position was revoked successfully");
     }
 });
