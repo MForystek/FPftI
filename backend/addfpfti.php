@@ -20,7 +20,7 @@
         $fileExt = explode('.', $fileName);
         $fileActualExt = strtolower(end($fileExt));
 
-        $allowed = array('jpg', 'jpeg', 'png', 'gif');
+        $allowed = array('jpg', 'jpeg', 'png', 'gif', 'webp');
 
         if (!in_array($fileActualExt, $allowed)) {
             header("Location: https://s113.labagh.pl/index.html?page=profile&mess=uploaderror");
