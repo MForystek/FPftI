@@ -13,7 +13,6 @@ error_reporting(E_ALL);
 
             $stmt2 = $dbh->prepare("SELECT * FROM fpfti WHERE id = :id");
             $stmt2->execute([':id' => $fpfti_id]);
-            $fpfti = $stmt2->fetch(PDO::FETCH_ASSOC);
 
             if (empty($_POST['comment-text'])){
                 header('Location: https://s113.labagh.pl/index.html?page=fpfti&id=' . $fpfti_id . '&mess=emptycomment');

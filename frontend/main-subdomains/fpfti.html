@@ -14,6 +14,7 @@
     var id = getContent("id");
     
     template_id(id);
+    var curr = getJSessionId();
     
     var link = 'https://s113.labagh.pl/backend/api/fpfti/read_fpfti_comments.php?fpfti_id=' + id + '';
     $.ajax({
@@ -27,19 +28,14 @@
         var item = tablica_json.data.shift();
         adder(item);
         jQuery.each(tablica_json.data, function() {
-            comtemplate(this.user_id, this.text, this.id);
+            comtemplate(this.user_id, this.text, this.id, curr);
+            
         });
+        addDelButton();
     })
     .fail(function(xhr, status, errorThrown) {
         alert("Data not found");
     });
 
-    // console.log($(".comments"));
-    // var tmp = $(".comments");
-    // console.log(document.getElementsByClassName("com-search"))
-
-    $( document ).ready(function() {
-        addDelButton();
-    });
     
 </script>
