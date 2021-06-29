@@ -27,7 +27,7 @@ function template(pic, op, title, id, likeCount, classs, purpose) {
                 '</div>' +
             '</a>' +
             '<div class="card-body">' +
-                '<div class="badge bg-success">' +    
+                '<div class="badge bg-success">' +
                     '<form action="https://s113.labagh.pl/index.html" class="d-flex" method="GET">' +
                         '<input type="hidden" name="page" value="search"></input>' +
                         '<input type="hidden" name="query" value="' + op + '"></input>' +

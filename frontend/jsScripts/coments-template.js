@@ -10,13 +10,11 @@ function findGetParameter(parameterName) {
 
 function adder(amount) {
     var id = findGetParameter("id");
-    var link = window.location.href;
     var temp = '<div class="card-header">' +
                     '<h5>' + amount + ' Comments:</h5>' +
                     '<form action="https://s113.labagh.pl/backend/addcomment.php" class="d-flex" method="POST">' +
                         '<input class="form-control me-2" type="search" name="comment-text" placeholder="Add your comment here...">' +
                         '<input type="hidden" name="fpfti-id" value="' + id + '"></input>' +
-                        '<input type="hidden" name="fpfti-link" value="' + link + '"></input>' +
                         '<button class="btn btn-light" name="comment-add" type="submit">Add</button>' +
                     '</form>' +
                 '</div>';
@@ -24,14 +22,18 @@ function adder(amount) {
     $(".comments").append(temp);
 }
 
-function comtemplate(user_id, text, user_name) {
+function comtemplate(user_id, text) {
     var temp =  '<div class="card-body">' +
                     '<div class="card bg-transparent">' +
-                        '<a href="https://s113.labagh.pl/index.html?page=' + user_id + '">' +
                             '<div class="card-header com">' +
-                                '<span class="comment-properties">Author: ' + user_name + ' | Id: ' + user_id +'' +
+                                '<div class="comment-properties">' +   
+                                    '<form action="https://s113.labagh.pl/index.html" class="d-flex" method="GET">' +
+                                        '<input type="hidden" name="page" value="search"></input>' +
+                                        '<input type="hidden" name="query" value="' + user_id + '"></input>' +
+                                        '<button class="search-button" type="submit">Author: ' + user_id + '</button>' +
+                                    '</form>' +
+                                '</div>' + 
                             '</div>' +
-                        '</a>' +
                         '<div class="card-body">' +
                             '<span>' + text + '</span>' +
                         '</div>' +

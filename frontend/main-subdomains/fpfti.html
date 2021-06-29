@@ -12,9 +12,8 @@
     var title = getContent("title");
     var like = getContent("likeCount");
     var id = getContent("id");
+    
     template_id(id);
-
-    //adder(1);
     
     var link = 'https://s113.labagh.pl/backend/api/fpfti/read_fpfti_comments.php?fpfti_id=' + id + '';
     $.ajax({
@@ -28,12 +27,12 @@
         var item = tablica_json.data.shift();
         adder(item);
         jQuery.each(tablica_json.data, function() {
-            comtemplate(this.user_id, this.text, this.login);
+            comtemplate(this.user_id, this.text);
         });
     })
     .fail(function(xhr, status, errorThrown) {
         alert("Data not found");
     });
 
-    addDelButton();
+    //addDelButton();
 </script>
