@@ -23,11 +23,12 @@
                     array('message' => 'hashtag too long')
                 );
             }
-            if ($fpfti_query[0] !== '#') {
-                $result = $fpfti->read_search_by_login($page, $fpfti_query);
-                array_push($fpfti_arr['data'], "tu?");
-            } else {
 
+            if (is_numeric($fpfti_query[0])) {
+                $result = $fpfti->read_search_by_user_id($page, $fpfti_query);
+            } else if ($fpfti_query[0] !== '#') {
+                $result = $fpfti->read_search_by_login($page, $fpfti_query);
+            } else {
                 $result = $fpfti->read_search_by_tag($page, $fpfti_query);
             }
             //get row count
