@@ -1,7 +1,7 @@
 <div class="fpfti-template"></div>
 <div class="card comments"></div>
 <script>
-    function getContent(argument){
+    function getContent(argument) {
         var content = window.location.search;
         const urlParams = new URLSearchParams(content);
         const page_type = urlParams.get(argument);
@@ -12,7 +12,7 @@
     var title = getContent("title");
     var like = getContent("likeCount");
     var id = getContent("id");
-    template(pic, op, title, id, like, ".fpfti-template", "details");
+    template_id(id);
 
     //adder(1);
     
@@ -22,7 +22,7 @@
         type: "GET",
         dataType : "text",
     })
-    .done(function( json ) {
+    .done(function(json) {
 
         var tablica_json = JSON.parse(json);
         var item = tablica_json.data.shift();
@@ -31,11 +31,9 @@
             comtemplate(this.user_id, this.text, this.login);
         });
     })
-    .fail(function( xhr, status, errorThrown ) {
+    .fail(function(xhr, status, errorThrown) {
         alert("Data not found");
     });
 
-
     addDelButton();
-
 </script>

@@ -118,7 +118,9 @@ $(function(){
         window.alert("You must be signed in to do that");
     } else if (result === "nosuchfpfti") {
         window.alert("This FPftI doesn't exist");
-    } else if (result === "fpftiaccepted ") {
+    } else if (result === "fpftiaccepted") {
         window.alert("Acceptance was done successfully");
-    } 
+    } else if (result === "emptycomment") {
+        window.alert("Your comment must contain comment");
+    }
 });

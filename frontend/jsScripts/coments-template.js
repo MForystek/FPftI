@@ -10,11 +10,13 @@ function findGetParameter(parameterName) {
 
 function adder(amount) {
     var id = findGetParameter("id");
+    var link = window.location.href;
     var temp = '<div class="card-header">' +
                     '<h5>' + amount + ' Comments:</h5>' +
                     '<form action="https://s113.labagh.pl/backend/addcomment.php" class="d-flex" method="POST">' +
                         '<input class="form-control me-2" type="search" name="comment-text" placeholder="Add your comment here...">' +
                         '<input type="hidden" name="fpfti-id" value="' + id + '"></input>' +
+                        '<input type="hidden" name="fpfti-link" value="' + link + '"></input>' +
                         '<button class="btn btn-light" name="comment-add" type="submit">Add</button>' +
                     '</form>' +
                 '</div>';

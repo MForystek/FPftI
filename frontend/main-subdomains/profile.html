@@ -17,15 +17,15 @@
         </li>
     </ul>
 </nav>
-
 <script>
-    function getContent(){
+    function getContent() {
         var content = window.location.search;
         const urlParams = new URLSearchParams(content);
         const page_type = urlParams.get('page');
         return page_type;
     }
-    function changeContent(content){
+
+    function changeContent(content) {
         if(content == "favourite"){
             changeToFav;
         }
@@ -35,7 +35,7 @@
         console.log("null0");
     }
 
-    function changeToFav(){
+    function changeToFav() {
         var id = getJSessionId();
         var link = 'https://s113.labagh.pl/backend/api/fpfti/read_user_likes.php?user_id=' + id + '';
         $(".fpfti-template").add("");
@@ -56,11 +56,12 @@
             alert("Data not found");
         });
     }
-    function changeToAdd(){
+
+    function changeToAdd() {
         var id = getJSessionId();
         var link = 'https://s113.labagh.pl/backend/api/fpfti/read_user_fpfti.php?user_id=' + id + '';
         $(".fpfti-template").add("");
-        //tu nie wiem czy zadziala
+        //tu nie wiem czy zadziała
 
         $.ajax({
         url: link,

@@ -18,13 +18,13 @@
         type: "GET",
         dataType : "text",
     })
-    .done(function( json ) {
+    .done(function(json) {
         var tablica_json = JSON.parse(json);
         jQuery.each(tablica_json.data, function() {
             template(this.link, this.user_id, this.title, this.id, this.likes, ".fpfti-template");
         });
     })
-    .fail(function( xhr, status, errorThrown ) {
+    .fail(function(xhr, status, errorThrown) {
         alert("Data not found");
     });
 </script>

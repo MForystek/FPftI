@@ -17,15 +17,8 @@ function addButtons(purpose) {
     return '<button class="btn btn-success col-4">' + first + '</button> <button class="btn btn-danger col-4">' + second + '</button>';
 }
 
-function addTagsHTML(purpose) {
-    if (purpose === "details") {
-        return '<div class="tags"></div>' + '</br>';
-    }
-    return "";
-}
-
 function template(pic, op, title, id, likeCount, classs, purpose) {
-    var link = '"https://s113.labagh.pl/index.html?page=fpfti&pic=' + pic + '&op=' + op + '&title=' + title + '&id=' + id + '&likeCount=' + likeCount + '">';
+    var link = '"https://s113.labagh.pl/index.html?page=fpfti&id=' + id + '">';
     var temp = 
         '<div class="card">' +
             '<a href=' + link +
@@ -36,7 +29,7 @@ function template(pic, op, title, id, likeCount, classs, purpose) {
             '<div class="card-body">' +
                 '<span class="badge bg-success">' +
                 '<a href="https://s113.labagh.pl/index.html?page='  + op + '">' + 'Author: ' + op + '</a>' +
-                '</span>' +
+                '</span> ' +
                 '<span class="badge bg-success test">' +
                     'Id: ' + id +
                 '</span>' +
@@ -45,8 +38,7 @@ function template(pic, op, title, id, likeCount, classs, purpose) {
                     '<div class="d-flex justify-content-evenly p-2">' +
                         '<img src="' + pic + '" class="img-fluid">' +
                     '</div>' +
-                '</a>' +
-                addTagsHTML(purpose) + 
+                '</a>' + 
                 '<div class="row fpfti-buttons">' +
                     addButtons(purpose) +
                     '<button class="btn btn-info col-4 disabled">' + addLikeCount(likeCount) + '</button>' +
@@ -62,4 +54,74 @@ function template(pic, op, title, id, likeCount, classs, purpose) {
 		    $(".tags").append('<span class="badge bg-success"><a href="https://www.youtube.com/watch?v=D-UmfqFjpl0">' + this + '</a></span>' + " ");
 	    });
     }
+}
+
+function template_id(id) {
+    var api_link = "https://s113.labagh.pl/backend/api/fpfti/read_fpfti.php?fpfti_id=" + id;
+    $.ajax({
+        url: api_link,
+        type: "GET",
+        dataType : "text",
+    })
+    .done(function(json) {
+        var tablica_json = JSON.parse(json);
+        jQuery.each(tablica_json.data, function() {
+            var link_to_fpfti_page = '"https://s113.labagh.pl/index.html?page=fpfti&id=' + this.id + '">';
+            var classs = ".fpfti-template";
+            var temp = '' +
+            '<div class="card">' +
+                '<a href=' + link_to_fpfti_page +
+                    '<div class="card-header">' +
+                        '<h5>' + this.title + '</h5>' +
+                    '</div>' +
+                '</a>' +
+                '<div class="card-body">' +
+                    '<span class="badge bg-success">' +
+                    '<a href="https://s113.labagh.pl/index.html?page='  + this.user_id + '">' + 'Author: ' + this.user_id + '</a>' +
+                    '</span> ' +
+                    '<span class="badge bg-success test">' +
+                        'Id: ' + this.id +
+                    '</span>' +
+                        
+                    '<a href=' + link_to_fpfti_page +
+                        '<div class="d-flex justify-content-evenly p-2">' +
+                            '<img src="' + this.link + '" class="img-fluid">' +
+                        '</div>' +
+                    '</a>' +
+                    '<div class="tags"></div>' + '</br>' + 
+                    '<div class="row fpfti-buttons">' +
+                        addButtons("") +
+                        '<button class="btn btn-info col-4 disabled">' + addLikeCount(this.likes) + '</button>' +
+                    '</div>' +
+                '</div>' +
+            '</div>';
+
+            $(classs).append(temp);
+
+            var tags_link = "https://s113.labagh.pl/backend/api/fpfti/read_fpfti_tags.php?fpfti_id=" + id;
+            $.ajax({
+                url: tags_link,
+                type: "GET",
+                dataType : "text",
+            })
+            .done(function(json) {
+                var tablica_json = JSON.parse(json);
+                jQuery.each(tablica_json.data, function() { 
+                    $(".tags").append('' + 
+                        '<div class="badge bg-success">' +
+                        '<form action="https://s113.labagh.pl/backend/api/fpfti/read_search.php?page=1" class="d-flex" method="POST">' +
+                            '<input type="hidden" name="query" value="' + this.tag + '"></input>' +
+                            '<button class="tag-button" name="search-button" type="submit">' + this.tag + '</button>' +
+                        '</form>' +
+                        '</div>' + " ");
+                });
+            })
+            .fail(function(xhr, status, errorThrown) {
+                alert("Data not found");
+            });
+        });
+    })
+    .fail(function(xhr, status, errorThrown) {
+        alert("Data not found");
+    });
 }
