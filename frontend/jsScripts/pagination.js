@@ -10,6 +10,9 @@ function findGetParameter(parameterName) {
 
 function insert_pagination() {
     var page = findGetParameter('page');
+    if (page === null) {
+        page = "main";
+    }
     var pag = findGetParameter('pag');
     if (pag <= 0 || pag === null || pag === NaN) {
         pag = 1;
