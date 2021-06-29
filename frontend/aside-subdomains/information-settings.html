@@ -57,4 +57,7 @@
     .fail(function(xhr, status, errorThrown) {
         alert("Data not found");
     });
+    $("#info").children().each(function(){
+        this.className += " plain-text";
+    });
 </script>

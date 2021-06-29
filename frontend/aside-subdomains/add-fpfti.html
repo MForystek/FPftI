@@ -3,8 +3,8 @@
         Add your FPftI
     </div>
     <div class="card-body">
-        <ul class="navbar-nav justify-content-end">
-            <form class="row" id="login-form" action="../../backend/addfpfti.php" method="POST" enctype="multipart/form-data">
+        <ul class="navbar-nav justify-content-end" >
+            <form class="row info" id="login-form" action="../../backend/addfpfti.php" method="POST" enctype="multipart/form-data">
                 <label class="form-label my-label">Title</label>
                 <input class="form-control" type="text" name="title" placeholder="Type FPftI title here..." aria-label="Title">
                 <label class="form-label my-label">Tags (begin with '#', separate by space)</label>
@@ -17,3 +17,8 @@
         </ul>
     </div>
 </div>
+<script>
+    $(".info").children().each(function(){
+        this.className += " plain-text";
+    });
+</script>
