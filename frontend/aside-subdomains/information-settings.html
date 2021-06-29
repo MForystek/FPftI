@@ -3,7 +3,7 @@
         Your Information
     </div>
     <div class="card-body">
-        <div class="container" id="info">
+        <div class="container info back">
             <div class="row">
                 <div class="col">
                     Login
@@ -57,7 +57,8 @@
     .fail(function(xhr, status, errorThrown) {
         alert("Data not found");
     });
-    $("#info").children().each(function(){
+    $(".info").children().each(function(){
         this.className += " plain-text";
+        console.log(this);
     });
 </script>
