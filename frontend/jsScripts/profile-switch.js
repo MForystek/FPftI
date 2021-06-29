@@ -16,7 +16,7 @@ function changeContent(content){
 
 function changeToFav(){
     var id = getJSessionId();
-    var link = 'https://s113.labagh.pl/backend/api/fpfti/read_user_likes.php?user_id=' + id + '';
+    var link = 'https://s113.labagh.pl/backend/api/fpfti/read_user_fpfti.php?user_id=' + id + '';
     $(".fpfti-template").add("");
     //tu nie wiem czy zadziala
 

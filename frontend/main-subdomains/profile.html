@@ -45,8 +45,9 @@
             alert("Data not found");
         });
     } else if(cnt == "favourite") {
+        $(".fpfti-template").add("");
         $.ajax({
-        url: "https://s113.labagh.pl/backend/api/fpfti/read_user_likes.php",
+        url: "https://s113.labagh.pl/backend/api/fpfti/read_user_favourites.php",
         type: "GET",
         dataType : "text",
         })
