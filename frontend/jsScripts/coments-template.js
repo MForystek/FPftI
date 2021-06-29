@@ -22,7 +22,7 @@ function adder(amount) {
     $(".comments").append(temp);
 }
 
-function comtemplate(user_id, text, comment_id) {
+function comtemplate(user_id, text, comment_id, curr) {
     var temp =  '<div class="card-body">' +
                     '<div class="card bg-transparent">' +
                             '<div class="card-header com">' +
@@ -46,8 +46,6 @@ function addDelButton() {
     //var where = $(".comment-properties");
     var curr_id = getJSessionId();
     var btnCtr = creatButton();
-    //console.log($(".card-body"))
-
     $(".com-search").each(function(index){
         var tekst = $( this ).text();
         console.log(tekst);
@@ -61,7 +59,7 @@ function addDelButton() {
 
 function creatButton() {
     var btnContainer = document.createElement("div");
-    btnContainer.className = "d-flex flex-row-reverse bd-highlight";
+    btnContainer.className = "d-flex flex-row-reverse bd-highlight del";
     var btnrmv = document.createElement("button");
     btnrmv.className = "btn btn-success btn-sm"
     btnrmv.innerHTML = "delete your comment";
