@@ -22,7 +22,7 @@ function adder(amount) {
     $(".comments").append(temp);
 }
 
-function comtemplate(user_id, text) {
+function comtemplate(user_id, text, comment_id) {
     var temp =  '<div class="card-body">' +
                     '<div class="card bg-transparent">' +
                             '<div class="card-header com">' +
@@ -30,7 +30,7 @@ function comtemplate(user_id, text) {
                                     '<form action="https://s113.labagh.pl/index.html" class="d-flex" method="GET">' +
                                         '<input type="hidden" name="page" value="search"></input>' +
                                         '<input type="hidden" name="query" value="' + user_id + '"></input>' +
-                                        '<button class="search-button" type="submit">Author: ' + user_id + '</button>' +
+                                        '<button class="search-button" type="submit">Author: ' + user_id + ' | Id: ' + comment_id + '</button>' +
                                     '</form>' +
                                 '</div>' + 
                             '</div>' +

@@ -32,13 +32,6 @@
                 <div class="col insert">
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    Total likes 
-                </div>
-                <div class="col insert">
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -46,13 +39,13 @@
 <script>
     var id = getJSessionId();
     var link = 'https://s113.labagh.pl/backend/api/fpfti/read_profile.php?user_id=' + id + '';
-    var table = $( ".insert" );
+    var table = $(".insert");
     $.ajax({
         url: link,
         type: "GET",
         dataType : "text",
     })
-    .done(function( json ) {
+    .done(function(json) {
         var tablica_json = JSON.parse(json);
         jQuery.each(tablica_json.data, function() {
             table[0].append(this.login);
@@ -61,8 +54,7 @@
             //table[3].append(this.FPftIcount);
         });
     })
-    .fail(function( xhr, status, errorThrown ) {
+    .fail(function(xhr, status, errorThrown) {
         alert("Data not found");
     });
-
 </script>

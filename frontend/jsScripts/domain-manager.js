@@ -131,5 +131,7 @@ $(function(){
         window.alert("Your comment must contain comment");
     } else if (result === "nofpftiremove") {
         window.alert("FPftI with this Id doesn't exist");
+    } else if (result === "nosuchcomment") {
+        window.alert("Comment with this Id doesn't exist");
     }
 });
