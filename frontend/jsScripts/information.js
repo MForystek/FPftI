@@ -23,19 +23,9 @@ function actionButtons(){
 
 function funFav(){
     window.location.href="https://s113.labagh.pl/index.html?page=profile&content=favourite";
-    // var current = document.getElementsByClassName("active");
-    // var fav = document.getElementsByClassName('fav');
-    // if(current[0].id == "added"){
-    //     current[0].className = current[0].className.replace(" active", "");
-    //     fav[0].className += " active";
-    // }
+    
 }
 function funAdd(){
     window.location.href="https://s113.labagh.pl/index.html?page=profile&content=added";
-    // var current = document.getElementsByClassName("active");
-    // var fav = document.getElementsByClassName('fav');
-    // if(current[0].id == "favourite"){
-    //     current[0].className = current[0].className.replace(" active", "");
-    //     fav[1].className += " active";
-    // }
+    
 }
