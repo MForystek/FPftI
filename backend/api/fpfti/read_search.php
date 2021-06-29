@@ -15,23 +15,22 @@
 
     try {
     $page = isset($_GET['page']) ? $_GET['page'] : die();
-    $fpfti_tag = htmlspecialchars($_POST['query']);
+    $fpfti_query = htmlspecialchars($_GET['query']);
 
-    
-
-    if (mb_strlen($fpfti_tag) !== 0) {
-            if (mb_strlen($fpfti_tag) > 64) {
+    if (mb_strlen($fpfti_query) !== 0) {
+            if (mb_strlen($fpfti_query) > 64) {
                 echo json_encode(
                     array('message' => 'hashtag too long')
                 );
             }
-            if ($fpfti_tag[0] !== '#' || mb_strlen($fpfti_tag) <= 1) {
-                echo json_encode(
-                    array('message' => 'hash without hashtag')
-                );
-            }
-            $result = $fpfti->read_search($page, $fpfti_tag);
 
+            if (is_numeric($fpfti_query[0])) {
+                $result = $fpfti->read_search_by_user_id($page, $fpfti_query);
+            } else if ($fpfti_query[0] !== '#') {
+                $result = $fpfti->read_search_by_login($page, $fpfti_query);
+            } else {
+                $result = $fpfti->read_search_by_tag($page, $fpfti_query);
+            }
             //get row count
             $num = $result->rowCount();
 

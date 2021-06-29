@@ -87,9 +87,25 @@
             return $stmt;
         }
 
-        public function read_search($page, $tag) {
+        public function read_search_by_tag($page, $tag) {
             $first = ($page - 1)*5;
             $query = 'SELECT * FROM fpfti f JOIN tags t ON f.id = t.fpfti_id WHERE t.tag = \'' . $tag . '\' ORDER BY f.created DESC LIMIT ' . $first . ', 5';
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+
+        public function read_search_by_login($page, $login) {
+            $first = ($page - 1)*5;
+            $query = 'SELECT * FROM fpfti f JOIN users u ON f.user_id = u.id WHERE u.login = \'' . $login . '\' ORDER BY f.created DESC LIMIT ' . $first . ', 5';
+            $stmt = $this->conn->prepare($query);
+            $stmt->execute();
+            return $stmt;
+        }
+
+        public function read_search_by_user_id($page, $user_id) {
+            $first = ($page - 1)*5;
+            $query = 'SELECT * FROM fpfti f JOIN users u ON f.user_id = u.id WHERE u.id = '. $user_id .' ORDER BY f.created DESC LIMIT ' . $first . ', 5';
             $stmt = $this->conn->prepare($query);
             $stmt->execute();
             return $stmt;
