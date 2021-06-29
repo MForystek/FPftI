@@ -24,6 +24,10 @@ $(function(){
                 $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/fpfti.html");
                 $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/login.html");
                 $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/registration.html");
+            } else if (result === "search") {
+                $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/search.html");
+                $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/login.html");
+                $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/registration.html");
             } else {
                 $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/oops.html");
             }
@@ -53,6 +57,9 @@ $(function(){
             } else if (result === "settings") {
                 $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/settings.html");
                 $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/information-settings.html");
+            } else if (result === "search") {
+                $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/search.html");
+                $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/sleeping-reaper.html");
             } else if (result === "admin" && session === 2) {
                 $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/admin.html");
                 $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/remove.html");
@@ -122,5 +129,7 @@ $(function(){
         window.alert("Acceptance was done successfully");
     } else if (result === "emptycomment") {
         window.alert("Your comment must contain comment");
+    } else if (result === "nofpftiremove") {
+        window.alert("FPftI with this Id doesn't exist");
     }
 });

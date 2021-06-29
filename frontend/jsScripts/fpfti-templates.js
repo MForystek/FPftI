@@ -47,12 +47,6 @@ function template(pic, op, title, id, likeCount, classs, purpose) {
         '</div>';
 
     $(classs).append(temp);
-
-    if (purpose === "details") {
-        jQuery.each(mytags.tags, function() {
-		    $(".tags").append('<span class="badge bg-success"><a href="https://www.youtube.com/watch?v=D-UmfqFjpl0">' + this + '</a></span>' + " ");
-	    });
-    }
 }
 
 function template_id(id) {
@@ -108,9 +102,9 @@ function template_id(id) {
                 jQuery.each(tablica_json.data, function() { 
                     $(".tags").append('' + 
                         '<div class="badge bg-success">' +
-                        '<form action="https://s113.labagh.pl/backend/api/fpfti/read_search.php?page=1" class="d-flex" method="POST">' +
+                        '<form action="https://s113.labagh.pl/index.html?page=search" class="d-flex" method="GET">' +
                             '<input type="hidden" name="query" value="' + this.tag + '"></input>' +
-                            '<button class="tag-button" name="search-button" type="submit">' + this.tag + '</button>' +
+                            '<button class="tag-button" type="submit">' + this.tag + '</button>' +
                         '</form>' +
                         '</div>' + " ");
                 });
