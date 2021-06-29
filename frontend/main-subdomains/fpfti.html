@@ -32,6 +32,9 @@
             
         });
         addDelButton();
+        $(".info").children().each(function(){
+            this.className += " plain-text";
+        });
     })
     .fail(function(xhr, status, errorThrown) {
         alert("Data not found");

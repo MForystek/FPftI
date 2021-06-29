@@ -38,7 +38,9 @@ html body {
 }
 
 nav .pagination .page-item .page-link {
+    margin-top: 10px;
     background-color: #403D39;
+    color: wheat;
 }
 
 #login-form *,  #register-form * {

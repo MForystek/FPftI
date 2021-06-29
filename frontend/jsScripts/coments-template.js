@@ -34,7 +34,7 @@ function comtemplate(user_id, text, comment_id) {
                                     '</form>' +
                                 '</div>' + 
                             '</div>' +
-                        '<div class="card-body">' +
+                        '<div class="card-body info">' +
                             '<span>' + text + '</span>' +
                         '</div>' +
                     '</div>' +
@@ -81,7 +81,7 @@ function creatButton(val) {
     inpt2.value = id_fpfti;
 
     btnContainer.className = "d-flex flex-row-reverse bd-highlight del";
-    btnrmv.className = "btn btn-success btn-sm"
+    btnrmv.className = "btn btn-light btn-sm"
     btnrmv.innerHTML = "delete your comment";
     btnrmv.name = "comment-remove";
     btnrmv.type = "submit";
