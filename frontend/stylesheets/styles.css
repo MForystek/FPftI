@@ -29,7 +29,7 @@ html body {
     padding: 10px;
 }
 
-#settings {
+.setting {
     background-color: inherit;
 }
 
@@ -71,4 +71,8 @@ nav .pagination .page-item .page-link {
     padding: 0;
     font: inherit;
     outline: inherit;
+}
+
+.delacc {
+    background-color: black;
 }

@@ -1,4 +1,4 @@
-function getJSessionId(){
+function getJSessionId() {
     var jsId = document.cookie.match(/PHPSESSID=[^;]+/);
     if(jsId != null) {
         if (jsId instanceof Array)
