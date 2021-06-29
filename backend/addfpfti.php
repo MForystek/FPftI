@@ -1,6 +1,5 @@
 <?php
     if (isset($_POST['fpfti-submit'])) {
-        print_r($_FILES);
         session_start();
         if (!isset($_SESSION['id']) || !isset($_SESSION['login'])) {
             header("Location: https://s113.labagh.pl/index.html?page=main&mess=notloggedin");
