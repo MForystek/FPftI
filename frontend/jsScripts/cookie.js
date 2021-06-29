@@ -1,4 +1,4 @@
-function getJSessionId(){
+function getJSessionId() {
     var jsId = document.cookie.match(/PHPSESSID=[^;]+/);
     if(jsId != null) {
         if (jsId instanceof Array)
@@ -7,6 +7,6 @@ function getJSessionId(){
             jsId = jsId.substring(10,12);
     }
     else
-        console.log("kurwa");
+        console.log("oops");
     return jsId;
 }

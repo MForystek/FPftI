@@ -17,36 +17,40 @@
         </li>
     </ul>
 </nav>
-
 <script>
-    function getContent(){
-        var content = window.location.search;
-        const urlParams = new URLSearchParams(content);
-        const page_type = urlParams.get('page');
-        return page_type;
-    }
-    function changeContent(content){
-        if(content == "favourite"){
-            changeToFav;
-        }
-        else if(content == "added"){
-            changeToAdd;
-        }
-        console.log("null0");
+    function findGetParameter(parameterName) {
+        var result = null;
+            tmp = [];
+        location.search.substr(1).split("&").forEach(function (item) {
+            tmp = item.split("=");
+            if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+        });
+        return result;
     }
 
-    function changeToFav(){
-        var id = getJSessionId();
-        var link = 'https://s113.labagh.pl/backend/api/fpfti/read_user_likes.php?user_id=' + id + '';
-        $(".fpfti-template").add("");
-        //tu nie wiem czy zadziala
-
+    var cnt = findGetParameter('content');
+    if(cnt === null || cnt == "added") {
         $.ajax({
-        url: link,
+        url: "https://s113.labagh.pl/backend/api/fpfti/read_user_fpfti.php",
         type: "GET",
         dataType : "text",
         })
-        .done(function( json ) {
+        .done(function(json) {
+            var tablica_json = JSON.parse(json);
+            jQuery.each(tablica_json.data, function() {
+                template(this.link, this.user_id, this.title, this.id, this.likes, ".fpfti-template");
+            });
+        })
+        .fail(function( xhr, status, errorThrown ) {
+            alert("Data not found");
+        });
+    } else if(cnt == "favourite") {
+        $.ajax({
+        url: "https://s113.labagh.pl/backend/api/fpfti/read_user_likes.php",
+        type: "GET",
+        dataType : "text",
+        })
+        .done(function(json) {
             var tablica_json = JSON.parse(json);
             jQuery.each(tablica_json.data, function() {
                 template(this.link, this.user_id, this.title, this.id, this.likes, ".fpfti-template");
@@ -56,28 +60,4 @@
             alert("Data not found");
         });
     }
-    function changeToAdd(){
-        var id = getJSessionId();
-        var link = 'https://s113.labagh.pl/backend/api/fpfti/read_user_fpfti.php?user_id=' + id + '';
-        $(".fpfti-template").add("");
-        //tu nie wiem czy zadziala
-
-        $.ajax({
-        url: link,
-        type: "GET",
-        dataType : "text",
-        })
-        .done(function( json ) {
-            var tablica_json = JSON.parse(json);
-            jQuery.each(tablica_json.data, function() {
-                template(this.link, this.user_id, this.title, this.id, this.likes, ".fpfti-template");
-            });
-        })
-        .fail(function( xhr, status, errorThrown ) {
-            alert("Data not found");
-        });
-    }
-
-    var cnt = getContent();
-    changeContent(cnt);
 </script>

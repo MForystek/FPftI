@@ -50,16 +50,15 @@
     </div>
 </div>
 <script>
-    
     var id = getJSessionId();
     var link = 'https://s113.labagh.pl/backend/api/fpfti/read_profile.php?user_id=' + id + '';
-    var table = $( ".insert" );
+    var table = $(".insert");
     $.ajax({
         url: link,
         type: "GET",
         dataType : "text",
     })
-    .done(function( json ) {
+    .done(function(json) {
         var tablica_json = JSON.parse(json);
         jQuery.each(tablica_json.data, function() {
             table[0].append(this.login);
@@ -74,5 +73,4 @@
 
     actionButtons();
     activeColor();
-
 </script>

@@ -8,24 +8,26 @@ function addLikeCount(likeCount) {
 
 function addButtons(purpose) {
     if (purpose === "admin") {
-        var first = 'Accept';
-        var second = 'Deny';
+        return '' +
+        '<form action="https://s113.labagh.pl/backend/judgefpfti.php" class="col-4 like-form" method="POST">' + 
+            '<button class="btn btn-success w-100 h-100" name="accept-button" type="submit">Accept</button>' +
+        '</form>'+
+        '<form action="https://s113.labagh.pl/backend/judgefpfti.php" class="col-4 like-form" method="POST">' +
+            '<button class="btn btn-danger w-100 h-100" name="deny-button" type="submit">Deny</button>' +
+        '</form>';
     } else {
-        var first = 'Like';
-        var second = 'Dislike';
-    }
-    return '<button class="btn btn-success col-4">' + first + '</button> <button class="btn btn-danger col-4">' + second + '</button>';
-}
-
-function addTagsHTML(purpose) {
-    if (purpose === "details") {
-        return '<div class="tags"></div>' + '</br>';
-    }
-    return "";
+        return '' +
+        '<form action="https://s113.labagh.pl/backend/handlelike.php" class="col-4 like-form" method="POST">' + 
+            '<button class="btn btn-success w-100 h-100" name="like-button" type="submit">Like</button>' +
+        '</form>'+
+        '<form action="https://s113.labagh.pl/backend/handlelike.php" class="col-4 like-form" method="POST">' +
+            '<button class="btn btn-danger w-100 h-100" name="dislike-button" type="submit">Dislike</button>' +
+        '</form>';
+    } 
 }
 
 function template(pic, op, title, id, likeCount, classs, purpose) {
-    var link = '"https://s113.labagh.pl/index.html?page=fpfti&pic=' + pic + '&op=' + op + '&title=' + title + '&id=' + id + '&likeCount=' + likeCount + '">';
+    var link = '"https://s113.labagh.pl/index.html?page=fpfti&id=' + id + '">';
     var temp = 
         '<div class="card">' +
             '<a href=' + link +
@@ -34,19 +36,21 @@ function template(pic, op, title, id, likeCount, classs, purpose) {
                 '</div>' +
             '</a>' +
             '<div class="card-body">' +
-                '<span class="badge bg-success">' +
-                '<a href="https://s113.labagh.pl/index.html?page='  + op + '">' + 'Author: ' + op + '</a>' +
-                '</span>' +
+                '<div class="badge bg-success">' +
+                    '<form action="https://s113.labagh.pl/index.html" class="d-flex" method="GET">' +
+                        '<input type="hidden" name="page" value="search"></input>' +
+                        '<input type="hidden" name="query" value="' + op + '"></input>' +
+                        '<button class="search-button" type="submit">Author: ' + op + '</button>' +
+                    '</form>' +
+                '</div> ' +
                 '<span class="badge bg-success test">' +
                     'Id: ' + id +
                 '</span>' +
-                    
                 '<a href=' + link +
                     '<div class="d-flex justify-content-evenly p-2">' +
                         '<img src="' + pic + '" class="img-fluid">' +
                     '</div>' +
-                '</a>' +
-                addTagsHTML(purpose) + 
+                '</a>' + 
                 '<div class="row fpfti-buttons">' +
                     addButtons(purpose) +
                     '<button class="btn btn-info col-4 disabled">' + addLikeCount(likeCount) + '</button>' +
@@ -55,11 +59,73 @@ function template(pic, op, title, id, likeCount, classs, purpose) {
         '</div>';
 
     $(classs).append(temp);
+}
 
-    if (purpose === "details") {
-        var mytags = {"tags": ["#funny", "#picture", "#planning"]}; 
-        jQuery.each(mytags.tags, function() {
-		    $(".tags").append('<span class="badge bg-success"><a href="https://www.youtube.com/watch?v=D-UmfqFjpl0">' + this + '</a></span>' + " ");
-	    });
-    }
+function template_id(id) {
+    var api_link = "https://s113.labagh.pl/backend/api/fpfti/read_fpfti.php?fpfti_id=" + id;
+    $.ajax({
+        url: api_link,
+        type: "GET",
+        dataType : "text",
+    })
+    .done(function(json) {
+        var tablica_json = JSON.parse(json);
+        jQuery.each(tablica_json.data, function() {
+            var classs = ".fpfti-template";
+            var temp = '' +
+            '<div class="card">' +
+                '<div class="card-header">' +
+                    '<h5>' + this.title + '</h5>' +
+                '</div>' +
+                '<div class="card-body">' +
+                    '<div class="badge bg-success">' +
+                        '<form action="https://s113.labagh.pl/index.html" class="d-flex" method="GET">' +
+                            '<input type="hidden" name="page" value="search"></input>' +
+                            '<input type="hidden" name="query" value="' + this.user_id + '"></input>' +
+                            '<button class="search-button" type="submit">Author: ' + this.user_id + '</button>' +
+                        '</form>' +
+                    '</div> ' +
+                    '<span class="badge bg-success test">' +
+                        'Id: ' + this.id +
+                    '</span>' +    
+                    '<div class="d-flex justify-content-evenly p-2">' +
+                        '<img src="' + this.link + '" class="img-fluid">' +
+                    '</div>' +
+                    '<div class="tags"></div>' + '</br>' + 
+                    '<div class="row fpfti-buttons">' +
+                        addButtons("") +
+                        '<button class="btn btn-info col-4 disabled">' + addLikeCount(this.likes) + '</button>' +
+                    '</div>' +
+                '</div>' +
+            '</div>';
+
+            $(classs).append(temp);
+
+            var tags_link = "https://s113.labagh.pl/backend/api/fpfti/read_fpfti_tags.php?fpfti_id=" + id;
+            $.ajax({
+                url: tags_link,
+                type: "GET",
+                dataType : "text",
+            })
+            .done(function(json) {
+                var tablica_json = JSON.parse(json);
+                jQuery.each(tablica_json.data, function() { 
+                    $(".tags").append('' + 
+                        '<div class="badge bg-success">' +
+                        '<form action="https://s113.labagh.pl/index.html" class="d-flex" method="GET">' +
+                            '<input type="hidden" name="page" value="search"></input>' +
+                            '<input type="hidden" name="query" value="' + this.tag + '"></input>' +
+                            '<button class="search-button" type="submit">' + this.tag + '</button>' +
+                        '</form>' +
+                        '</div>' + " ");
+                });
+            })
+            .fail(function(xhr, status, errorThrown) {
+                alert("Data not found");
+            });
+        });
+    })
+    .fail(function(xhr, status, errorThrown) {
+        alert("Data not found");
+    });
 }

@@ -29,7 +29,7 @@ html body {
     padding: 10px;
 }
 
-#settings {
+.setting {
     background-color: inherit;
 }
 
@@ -62,4 +62,21 @@ nav .pagination .page-item .page-link {
 
 #logout-form {
     padding: 0px 5px 0 5px;
+}
+
+.search-button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    outline: inherit;
+}
+
+.delacc {
+    background-color: black;
+}
+
+.like-form {
+    padding-left: 0 !important;
 }

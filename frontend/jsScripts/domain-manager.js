@@ -24,6 +24,10 @@ $(function(){
                 $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/fpfti.html");
                 $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/login.html");
                 $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/registration.html");
+            } else if (result === "search") {
+                $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/search.html");
+                $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/login.html");
+                $("#aside-second").load("https://s113.labagh.pl/frontend/aside-subdomains/registration.html");
             } else {
                 $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/oops.html");
             }
@@ -53,6 +57,9 @@ $(function(){
             } else if (result === "settings") {
                 $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/settings.html");
                 $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/information-settings.html");
+            } else if (result === "search") {
+                $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/search.html");
+                $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/sleeping-reaper.html");
             } else if (result === "admin" && session === 2) {
                 $("#main-content").load("https://s113.labagh.pl/frontend/main-subdomains/admin.html");
                 $("#aside-first").load("https://s113.labagh.pl/frontend/aside-subdomains/remove.html");
@@ -102,7 +109,7 @@ $(function(){
         window.alert("Some other error has occured");
     } else if (result === "commentadded") {
         window.alert("Comment added successfully");
-    }else if (result === "commentdeleted") {
+    } else if (result === "commentdeleted") {
         window.alert("Comment deleted successfully");
     } else if (result === "adminadded") {
         window.alert("The administrator's position was granted successfully");
@@ -110,5 +117,23 @@ $(function(){
         window.alert("The administrator's position was revoked successfully");
     } else if (result === "nosuchuser") {
         window.alert("No such user exists");
-    } 
+    } else if (result === "userdeleted") {
+        window.alert("User was deleted successfully");
+    } else if (result === "nosuchuser") {
+        window.alert("No such user exists");
+    } else if (result === "notloggedin") {
+        window.alert("You must be signed in to do that");
+    } else if (result === "nosuchfpfti") {
+        window.alert("This FPftI doesn't exist");
+    } else if (result === "fpftiaccepted") {
+        window.alert("Acceptance was done successfully");
+    } else if (result === "emptycomment") {
+        window.alert("Your comment must contain comment");
+    } else if (result === "nofpftiremove") {
+        window.alert("FPftI with this Id doesn't exist");
+    } else if (result === "nosuchcomment") {
+        window.alert("Comment with this Id doesn't exist");
+    } else if (result === "loginistaken") {
+        window.alert("This login is already taken");
+    }
 });

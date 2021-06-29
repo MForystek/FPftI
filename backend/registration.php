@@ -22,10 +22,19 @@
     try {
         include('./includes/dbconnect.inc.php');
 
-        $stmt = $dbh->prepare('INSERT INTO users (login, password) VALUES (:login, :password)');
-        $stmt->execute([':login' => $register_login, ':password' => $register_password]);
-        header('Location: https://s113.labagh.pl/index.html?page=main&mess=registrationsuccess');
-        exit();
+        $stmt = $dbh->prepare('SELECT * FROM users WHERE login = :login');
+        $stmt->execute([':login' => $register_login]);
+        $check_login = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($register_login !== $check_login['login']){   
+            $stmt = $dbh->prepare('INSERT INTO users (login, password) VALUES (:login, :password)');
+            $stmt->execute([':login' => $register_login, ':password' => $register_password]);
+            header('Location: https://s113.labagh.pl/index.html?page=main&mess=registrationsuccess');
+            exit();
+        } else {
+            header('Location: https://s113.labagh.pl/index.html?page=main&mess=loginistaken');
+            exit();
+        }
     } catch (PDOException $e) {
         header('Location: https://s113.labagh.pl/index.html?page=main&mess=error');
         exit();

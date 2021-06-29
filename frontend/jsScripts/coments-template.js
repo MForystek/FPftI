@@ -1,23 +1,39 @@
-function adder(amount){
+function findGetParameter(parameterName) {
+    var result = null;
+        tmp = [];
+    location.search.substr(1).split("&").forEach(function (item) {
+        tmp = item.split("=");
+        if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+    });
+    return result;
+}
+
+function adder(amount) {
+    var id = findGetParameter("id");
     var temp = '<div class="card-header">' +
                     '<h5>' + amount + ' Comments:</h5>' +
-                    '<form class="d-flex" method="POST">' +
-                        '<input class="form-control me-2" type="search" placeholder="Add your comment...">' +
-                        '<button class="btn btn-light" type="submit">Add</button>' +
+                    '<form action="https://s113.labagh.pl/backend/addcomment.php" class="d-flex" method="POST">' +
+                        '<input class="form-control me-2" type="search" name="comment-text" placeholder="Add your comment here...">' +
+                        '<input type="hidden" name="fpfti-id" value="' + id + '"></input>' +
+                        '<button class="btn btn-light" name="comment-add" type="submit">Add</button>' +
                     '</form>' +
                 '</div>';
 
     $(".comments").append(temp);
 }
 
-function comtemplate(user_id, text, user_name){
+function comtemplate(user_id, text, comment_id) {
     var temp =  '<div class="card-body">' +
                     '<div class="card bg-transparent">' +
-                        '<a href="https://s113.labagh.pl/index.html?page=' + user_id + '">' +
                             '<div class="card-header com">' +
-                                '<span class="comment-properties">Author: ' + user_name + ' | Id: ' + user_id +'' +
+                                '<div class="comment-properties">' +   
+                                    '<form action="https://s113.labagh.pl/index.html" class="d-flex" method="GET">' +
+                                        '<input type="hidden" name="page" value="search"></input>' +
+                                        '<input type="hidden" name="query" value="' + user_id + '"></input>' +
+                                        '<button class="search-button" type="submit">Author: ' + user_id + ' | Id: ' + comment_id + '</button>' +
+                                    '</form>' +
+                                '</div>' + 
                             '</div>' +
-                        '</a>' +
                         '<div class="card-body">' +
                             '<span>' + text + '</span>' +
                         '</div>' +
@@ -26,7 +42,7 @@ function comtemplate(user_id, text, user_name){
     $(".comments").append(temp);
 }
 
-function addDelButton(){
+function addDelButton() {
     var where = $(".comment-properties");
     var curr_id = getJSessionId();
     var btnCtr = creatButton();
@@ -40,7 +56,7 @@ function addDelButton(){
     });
 }
 
-function creatButton(){
+function creatButton() {
     var btnContainer = document.createElement("div");
     btnContainer.className = "d-flex flex-row-reverse bd-highlight";
     var btnrmv = document.createElement("button");

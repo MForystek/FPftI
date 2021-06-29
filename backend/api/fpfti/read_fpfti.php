@@ -14,9 +14,7 @@
     $fpfti = new Fpfti($db);
 
     //query
-    session_start();
-    $user_id = isset($_GET['user_id']) ? $_GET['user_id'] : $_SESSION['id'];
-    $result = $fpfti->read_user_likes($user_id);
+    $result = $fpfti->read_fpfti($_GET['fpfti_id']);
     //get row count
     $num = $result->rowCount();
 

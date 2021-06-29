@@ -14,38 +14,31 @@
     $fpfti = new Fpfti($db);
 
     //query
-    session_start();
-    $user_id = isset($_GET['user_id']) ? $_GET['user_id'] : $_SESSION['id'];
-    $result = $fpfti->read_user_likes($user_id);
+    $fpfti_id = isset($_GET['fpfti_id']) ? $_GET['fpfti_id'] : die();
+    $result = $fpfti->read_fpfti_tags($fpfti_id);
     //get row count
     $num = $result->rowCount();
 
     //check if any fpfti
     if($num > 0) {
         //Post array
-        $fpfti_arr = array();
-        $fpfti_arr['data'] = array();
+        $tags_arr = array();
+        $tags_arr['data'] = array();
 
         while($row = $result->fetch(PDO::FETCH_ASSOC)) {
             extract($row);
-            $fpfti_item = array(
-                'id' => $id,
-                'title' => $title,
-                'user_id' => $user_id,
-                'link' => $link,
-                'accepted' => $accepted,
-                'likes' => $likes,
-                'created' => $created
+            $tags_item = array(
+                'tag' => $tag
             );
 
             //Push to "data"
-            array_push($fpfti_arr['data'], $fpfti_item);
+            array_push($tags_arr['data'], $tags_item);
         }
 
         //Turn to JSON & output
-        echo json_encode($fpfti_arr);
+        echo json_encode($tags_arr);
     } else {
-        echo json_encode(
-            array('message' => 'No fpfti found')
-        );
+        $tags_arr = array();
+        $tags_arr['data'] = array();
+        echo json_encode($tags_arr);
     }
