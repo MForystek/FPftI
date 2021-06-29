@@ -30,7 +30,7 @@ function comtemplate(user_id, text, comment_id) {
                                     '<form action="https://s113.labagh.pl/index.html" class="d-flex" method="GET">' +
                                         '<input type="hidden" name="page" value="search"></input>' +
                                         '<input type="hidden" name="query" value="' + user_id + '"></input>' +
-                                        '<button class="search-button" type="submit">Author: ' + user_id + ' | Id: ' + comment_id + '</button>' +
+                                        '<button class="search-button com-search" type="submit">Author: ' + user_id + ' | Id: ' + comment_id + '</button>' +
                                     '</form>' +
                                 '</div>' + 
                             '</div>' +
@@ -43,15 +43,18 @@ function comtemplate(user_id, text, comment_id) {
 }
 
 function addDelButton() {
-    var where = $(".comment-properties");
+    //var where = $(".comment-properties");
     var curr_id = getJSessionId();
     var btnCtr = creatButton();
+    //console.log($(".card-body"))
 
-    $(".comment-properties").each(function(index){
+    $(".com-search").each(function(index){
         var tekst = $( this ).text();
+        console.log(tekst);
         if(tekst.includes(curr_id)){
             var tmp = this.closest(".com");
             tmp.appendChild(btnCtr);
+            console.log(this);
         }
     });
 }

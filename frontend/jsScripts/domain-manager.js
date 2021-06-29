@@ -135,5 +135,7 @@ $(function(){
         window.alert("Comment with this Id doesn't exist");
     } else if (result === "loginistaken") {
         window.alert("This login is already taken");
+    } else if (result === "settingschanged") {
+        window.alert("Your information was changed successfully");
     }
 });
