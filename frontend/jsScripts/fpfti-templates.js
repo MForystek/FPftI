@@ -49,7 +49,6 @@ function template(pic, op, title, id, likeCount, classs, purpose) {
     $(classs).append(temp);
 
     if (purpose === "details") {
-        var mytags = {"tags": ["#funny", "#picture", "#planning"]}; 
         jQuery.each(mytags.tags, function() {
 		    $(".tags").append('<span class="badge bg-success"><a href="https://www.youtube.com/watch?v=D-UmfqFjpl0">' + this + '</a></span>' + " ");
 	    });
