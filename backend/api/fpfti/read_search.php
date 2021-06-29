@@ -15,8 +15,8 @@
 
     try {
     $page = isset($_GET['page']) ? $_GET['page'] : die();
-    //$fpfti_tag = htmlspecialchars($_POST['tags']);
-    $fpfti_tag = '#smieszne';
+    $fpfti_tag = htmlspecialchars($_POST['tag']);
+
     
 
     if (mb_strlen($fpfti_tag) !== 0) {
