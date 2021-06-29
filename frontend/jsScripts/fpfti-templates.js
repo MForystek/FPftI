@@ -27,13 +27,16 @@ function template(pic, op, title, id, likeCount, classs, purpose) {
                 '</div>' +
             '</a>' +
             '<div class="card-body">' +
-                '<span class="badge bg-success">' +
-                '<a href="https://s113.labagh.pl/index.html?page='  + op + '">' + 'Author: ' + op + '</a>' +
-                '</span> ' +
+                '<div class="badge bg-success">' +    
+                    '<form action="https://s113.labagh.pl/index.html" class="d-flex" method="GET">' +
+                        '<input type="hidden" name="page" value="search"></input>' +
+                        '<input type="hidden" name="query" value="' + op + '"></input>' +
+                        '<button class="search-button" type="submit">Author: ' + op + '</button>' +
+                    '</form>' +
+                '</div> ' +
                 '<span class="badge bg-success test">' +
                     'Id: ' + id +
                 '</span>' +
-                    
                 '<a href=' + link +
                     '<div class="d-flex justify-content-evenly p-2">' +
                         '<img src="' + pic + '" class="img-fluid">' +
@@ -59,28 +62,26 @@ function template_id(id) {
     .done(function(json) {
         var tablica_json = JSON.parse(json);
         jQuery.each(tablica_json.data, function() {
-            var link_to_fpfti_page = '"https://s113.labagh.pl/index.html?page=fpfti&id=' + this.id + '">';
             var classs = ".fpfti-template";
             var temp = '' +
             '<div class="card">' +
-                '<a href=' + link_to_fpfti_page +
-                    '<div class="card-header">' +
-                        '<h5>' + this.title + '</h5>' +
-                    '</div>' +
-                '</a>' +
+                '<div class="card-header">' +
+                    '<h5>' + this.title + '</h5>' +
+                '</div>' +
                 '<div class="card-body">' +
-                    '<span class="badge bg-success">' +
-                    '<a href="https://s113.labagh.pl/index.html?page='  + this.user_id + '">' + 'Author: ' + this.user_id + '</a>' +
-                    '</span> ' +
+                    '<div class="badge bg-success">' +
+                        '<form action="https://s113.labagh.pl/index.html" class="d-flex" method="GET">' +
+                            '<input type="hidden" name="page" value="search"></input>' +
+                            '<input type="hidden" name="query" value="' + this.user_id + '"></input>' +
+                            '<button class="search-button" type="submit">Author: ' + this.user_id + '</button>' +
+                        '</form>' +
+                    '</div> ' +
                     '<span class="badge bg-success test">' +
                         'Id: ' + this.id +
-                    '</span>' +
-                        
-                    '<a href=' + link_to_fpfti_page +
-                        '<div class="d-flex justify-content-evenly p-2">' +
-                            '<img src="' + this.link + '" class="img-fluid">' +
-                        '</div>' +
-                    '</a>' +
+                    '</span>' +    
+                    '<div class="d-flex justify-content-evenly p-2">' +
+                        '<img src="' + this.link + '" class="img-fluid">' +
+                    '</div>' +
                     '<div class="tags"></div>' + '</br>' + 
                     '<div class="row fpfti-buttons">' +
                         addButtons("") +
@@ -102,9 +103,10 @@ function template_id(id) {
                 jQuery.each(tablica_json.data, function() { 
                     $(".tags").append('' + 
                         '<div class="badge bg-success">' +
-                        '<form action="https://s113.labagh.pl/index.html?page=search" class="d-flex" method="GET">' +
+                        '<form action="https://s113.labagh.pl/index.html" class="d-flex" method="GET">' +
+                            '<input type="hidden" name="page" value="search"></input>' +
                             '<input type="hidden" name="query" value="' + this.tag + '"></input>' +
-                            '<button class="tag-button" type="submit">' + this.tag + '</button>' +
+                            '<button class="search-button" type="submit">' + this.tag + '</button>' +
                         '</form>' +
                         '</div>' + " ");
                 });
