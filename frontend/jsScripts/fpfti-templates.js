@@ -6,22 +6,31 @@ function addLikeCount(likeCount) {
     }
 }
 
-function addButtons(purpose) {
+function addButtons(purpose, id) {
+    var hreff = document.location;
     if (purpose === "admin") {
         return '' +
-        '<form action="https://s113.labagh.pl/backend/judgefpfti.php" class="col-4 like-form" method="POST">' + 
-            '<button class="btn btn-success w-100 h-100" name="accept-button" type="submit">Accept</button>' +
+        '<form action="https://s113.labagh.pl/backend/acceptfpfti.php" class="col-4 like-form" method="POST">' + 
+            '<input type="hidden" name="fpfti-id" value="' + id + '">' +
+            '<input type="hidden" name="header" value="' + hreff + '">' +
+            '<button class="btn btn-success w-100 h-100" name="accept-button" value="1" type="submit">Accept</button>' +
         '</form>'+
-        '<form action="https://s113.labagh.pl/backend/judgefpfti.php" class="col-4 like-form" method="POST">' +
-            '<button class="btn btn-danger w-100 h-100" name="deny-button" type="submit">Deny</button>' +
+        '<form action="https://s113.labagh.pl/backend/denyfpfti.php" class="col-4 like-form" method="POST">' +
+            '<input type="hidden" name="header" value="' + hreff + '">' +
+            '<input type="hidden" name="fpfti-id" value="' + id + '">' +
+            '<button class="btn btn-danger w-100 h-100" name="deny-button" value="1" type="submit">Deny</button>' +
         '</form>';
     } else {
         return '' +
         '<form action="https://s113.labagh.pl/backend/handlelike.php" class="col-4 like-form" method="POST">' + 
-            '<button class="btn btn-success w-100 h-100" name="like-button" type="submit">Like</button>' +
+            '<input type="hidden" name="header" value="' + hreff + '">' +
+            '<input type="hidden" name="fpfti-id" value="' + id + '">' +
+            '<button class="btn btn-success w-100 h-100" name="like-button" value="1" type="submit">Like</button>' +
         '</form>'+
-        '<form action="https://s113.labagh.pl/backend/handlelike.php" class="col-4 like-form" method="POST">' +
-            '<button class="btn btn-danger w-100 h-100" name="dislike-button" type="submit">Dislike</button>' +
+        '<form action="https://s113.labagh.pl/backend/handledislike.php" class="col-4 like-form" method="POST">' +
+            '<input type="hidden" name="header" value="' + hreff + '">' +
+            '<input type="hidden" name="fpfti-id" value="' + id + '">' +
+            '<button class="btn btn-danger w-100 h-100" name="dislike-button" value="1" type="submit">Dislike</button>' +
         '</form>';
     } 
 }
@@ -52,7 +61,7 @@ function template(pic, op, title, id, likeCount, classs, purpose) {
                     '</div>' +
                 '</a>' + 
                 '<div class="row fpfti-buttons">' +
-                    addButtons(purpose) +
+                    addButtons(purpose, id) +
                     '<button class="btn btn-info col-4 disabled">' + addLikeCount(likeCount) + '</button>' +
                 '</div>' +
             '</div>' +
@@ -93,7 +102,7 @@ function template_id(id) {
                     '</div>' +
                     '<div class="tags"></div>' + '</br>' + 
                     '<div class="row fpfti-buttons">' +
-                        addButtons("") +
+                        addButtons("", id) +
                         '<button class="btn btn-info col-4 disabled">' + addLikeCount(this.likes) + '</button>' +
                     '</div>' +
                 '</div>' +

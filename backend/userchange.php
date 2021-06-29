@@ -16,8 +16,11 @@
                     $user = $stmt1->fetch(PDO::FETCH_ASSOC);
         
                     if ($user['id'] === $_SESSION['id']) {
+                        $name = htmlspecialchars($_POST['fname']);
+                        $password = password_hash(htmlspecialchars($_POST['fpassword']), PASSWORD_DEFAULT);
+                        $age = htmlspecialchars($_POST['age']);
                         $stmt2 = $dbh->prepare("UPDATE users SET name = :name, password = :password, age = :age WHERE id = :id");
-                        $stmt2->execute([':name' => $_POST['fname'], ':password' => $_POST['fpassword'], ':age' => $_POST['age'], ':id' => $user['id']]);
+                        $stmt2->execute([':name' => $name, ':password' => $password, ':age' => $age, ':id' => $user['id']]);
                         header("Location: https://s113.labagh.pl/index.html?page=settings&mess=settingschanged");
                         exit();
                     } else {
