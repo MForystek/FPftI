@@ -76,3 +76,7 @@ nav .pagination .page-item .page-link {
 .delacc {
     background-color: black;
 }
+
+.like-form {
+    padding-left: 0 !important;
+}
