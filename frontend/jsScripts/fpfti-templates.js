@@ -12,11 +12,9 @@ function addButtons(purpose, id) {
         return '' +
         '<form action="https://s113.labagh.pl/backend/acceptfpfti.php" class="col-4 like-form" method="POST">' + 
             '<input type="hidden" name="fpfti-id" value="' + id + '">' +
-            '<input type="hidden" name="header" value="' + hreff + '">' +
             '<button class="btn btn-success w-100 h-100" name="accept-button" value="1" type="submit">Accept</button>' +
         '</form>'+
         '<form action="https://s113.labagh.pl/backend/denyfpfti.php" class="col-4 like-form" method="POST">' +
-            '<input type="hidden" name="header" value="' + hreff + '">' +
             '<input type="hidden" name="fpfti-id" value="' + id + '">' +
             '<button class="btn btn-danger w-100 h-100" name="deny-button" value="1" type="submit">Deny</button>' +
         '</form>';
