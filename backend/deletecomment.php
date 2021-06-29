@@ -26,7 +26,7 @@
                         header("Location: https://s113.labagh.pl/index.html?page=admin&mess=commentdeleted");
                         exit();
                     } else {
-                        header("Location: https://s113.labagh.pl/index.html?page=profile&mess=commentdeleted");
+                        header('Location: https://s113.labagh.pl/index.html?page=fpfti&id='.$_POST['fpfti-id']);
                         exit();
                     }
                 } else {
@@ -38,7 +38,7 @@
                     header("Location: https://s113.labagh.pl/index.html?page=admin&mess=nosuchcomment");
                     exit();
                 } else {
-                    header("Location: https://s113.labagh.pl/index.html?page=profile&mess=nosuchcomment");
+                    header('Location: https://s113.labagh.pl/index.html?page=fpfti&id='.$_POST['fpfti-id']);
                     exit();
                 }
             }
