@@ -25,13 +25,6 @@
                 <div class="col insert">
                 </div>
             </div>
-            <div class="row">
-                <div class="col">
-                    Your FPftI count
-                </div>
-                <div class="col insert">
-                </div>
-            </div>
         </div>
         <div class="d-grid gap-2">
             <a class="btn btn-dark" href="https://s113.labagh.pl/index.html?page=settings">Settings</a>
@@ -54,7 +47,6 @@
             table[0].append(this.login);
             table[1].append(this.name);
             table[2].append(this.age);
-            //table[3].append(this.FPftIcount);
         });
     })
     .fail(function( xhr, status, errorThrown ) {
@@ -63,7 +55,7 @@
 
     actionButtons();
     activeColor();
-    $("#info").children().each(function(){
+    $("#info").children().each(function() {
         this.className += " plain-text";
     });
 </script>
