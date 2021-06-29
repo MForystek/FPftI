@@ -3,8 +3,8 @@
         Personal settings
     </div>
     <div class="card-body">
-        <form class="d-flex settings" method="POST">
-            <div class="container"  id="settings">
+        <form action="https://s113.labagh.pl/backend/userchange.php" class="d-flex settings" method="POST">
+            <div class="container setting">
                 <div class="row justify-content-center">
                     <div class="col-md-4">
                         <label for="fname">Type name</label>
@@ -42,24 +42,30 @@
                         <div class="g-recaptcha" data-sitekey="6LcrreYUAAAAAGeERM9Etdv8wlh81RCSK0LXuwfX"></div>
                     </div>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col-md-4">
-                        <label for="delete">Delete your account</label>
-                    </div>
-                    <div class="col-md-4">
-                        <button class="btn btn-outline-danger" type="submit">Are you sure?</button>
-                    </div>
-                </div>
                 <br>
                 <div class="row">
                     <div class="d-grid gap-2">
-                            <button class="btn btn-dark" type="submit">Save</button>
+                            <button class="btn btn-dark" name="settings-button" type="submit">Save</button>
                     </div>
                 </div>
                 <br>
                 <div class="row">
                     <div class="d-grid gap-2">
                             <a href="https://s113.labagh.pl/index.html?page=profile" class="btn btn-outline-dark" type="submit">Return</a>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </form>
+        <form action="https://s113.labagh.pl/backend/deleteuser.php" class="d-flex settings" method="POST">
+            <div class="container delacc">
+                <div class="row justify-content-center">
+                    <div class="col-md-3">
+                        <label for="delete">Delete your account</label>
+                    </div>
+                    <div class="col-md-3">
+                        <input type="hidden" name="user-id", value="-1"></input>
+                        <button class="btn btn-outline-danger" name="user-remove" type="submit">Are you sure?</button>
                     </div>
                 </div>
             </div>

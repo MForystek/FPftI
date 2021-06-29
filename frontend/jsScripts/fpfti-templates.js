@@ -8,13 +8,22 @@ function addLikeCount(likeCount) {
 
 function addButtons(purpose) {
     if (purpose === "admin") {
-        var first = 'Accept';
-        var second = 'Deny';
+        return '' +
+        '<form action="https://s113.labagh.pl/backend/judgefpfti.php" class="col-4 like-form" method="POST">' + 
+            '<button class="btn btn-success w-100 h-100" name="accept-button" type="submit">Accept</button>' +
+        '</form>'+
+        '<form action="https://s113.labagh.pl/backend/judgefpfti.php" class="col-4 like-form" method="POST">' +
+            '<button class="btn btn-danger w-100 h-100" name="deny-button" type="submit">Deny</button>' +
+        '</form>';
     } else {
-        var first = 'Like';
-        var second = 'Dislike';
-    }
-    return '<button class="btn btn-success col-4">' + first + '</button> <button class="btn btn-danger col-4">' + second + '</button>';
+        return '' +
+        '<form action="https://s113.labagh.pl/backend/handlelike.php" class="col-4 like-form" method="POST">' + 
+            '<button class="btn btn-success w-100 h-100" name="like-button" type="submit">Like</button>' +
+        '</form>'+
+        '<form action="https://s113.labagh.pl/backend/handlelike.php" class="col-4 like-form" method="POST">' +
+            '<button class="btn btn-danger w-100 h-100" name="dislike-button" type="submit">Dislike</button>' +
+        '</form>';
+    } 
 }
 
 function template(pic, op, title, id, likeCount, classs, purpose) {
