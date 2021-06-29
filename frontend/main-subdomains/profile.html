@@ -3,21 +3,13 @@
         <h4>Your Funny Pictures from the Internet (or your computer)</h4>
     </div>
     <div class="card-body fpfti-template"></div>
+    <nav id="pagination">
+        <ul class="pagination justify-content-center"></ul>
+    </nav>
 </div>
-<nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center">
-        <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Prev</a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">...</a></li>
-        <li class="page-item"><a class="page-link" href="#">44</a></li>
-        <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-        </li>
-    </ul>
-</nav>
 <script>
+    insert_pagination();
+
     function findGetParameter(parameterName) {
         var result = null;
             tmp = [];
