@@ -41,15 +41,14 @@
                 $fpfti_arr['data'] = array();
 
                 while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                    extract($row);
                     $fpfti_item = array(
-                        'id' => $id,
-                        'title' => $title,
-                        'user_id' => $user_id,
-                        'link' => $link,
-                        'accepted' => $accepted,
-                        'likes' => $likes,
-                        'created' => $created
+                        'id' => $row['id'],
+                        'title' => $row['title'],
+                        'user_id' => $row['user_id'],
+                        'link' => $row['link'],
+                        'accepted' => $row['accepted'],
+                        'likes' => $row['likes'],
+                        'created' => $row['created']
                     );
 
                     //Push to "data"
