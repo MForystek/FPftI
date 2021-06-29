@@ -24,13 +24,14 @@
     }
     
     var query = findGetParameter('query');
+    query = query.replaceAll('#', '%23');
     var link = "https://s113.labagh.pl/backend/api/fpfti/read_search.php?page=1&query=" + query;
     $.ajax({
         url: link,
         type: "GET",
         dataType : "text",
     })
-    .done(function( json ) {
+    .done(function(json) {
         var tablica_json = JSON.parse(json);
         jQuery.each(tablica_json.data, function() {
             template(this.link, this.user_id, this.title, this.id, this.likes, ".fpfti-template");
