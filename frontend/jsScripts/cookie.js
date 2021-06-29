@@ -7,6 +7,6 @@ function getJSessionId(){
             jsId = jsId.substring(10,12);
     }
     else
-        console.log("kurwa");
+        console.log("oops");
     return jsId;
 }
