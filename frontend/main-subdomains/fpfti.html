@@ -28,7 +28,7 @@
         var item = tablica_json.data.shift();
         adder(item);
         jQuery.each(tablica_json.data, function() {
-            comtemplate(this.user_id, this.text, this.id, curr);
+            comtemplate(this.user_id, this.text, this.id, id);
             
         });
         addDelButton();

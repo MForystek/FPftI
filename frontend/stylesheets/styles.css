@@ -1,6 +1,10 @@
 html body {
-    background-color: black;
+    background-color: #252422;
     color: white;
+}
+
+.plain-text {
+    color: #151514;
 }
 
 .card{
@@ -8,11 +12,11 @@ html body {
 }
 
 .card .card-header {
-    background-color: rgba(54, 92, 11, 0.747);
+    background-color: #391405;
 }
 
 .card a {
-    color: white;
+    color: #FFFCF2;
     text-decoration: none;
 }
 
@@ -21,11 +25,11 @@ html body {
 }
 
 .card .card-body {
-    background-color: rgba(0, 82, 4, 0.363);
+    background-color: #CCC5B9;
 }
 
 .container {
-    background-color: rgba(73, 55, 6, 0.466);
+    background-color: #868179;
     padding: 10px;
 }
 
@@ -34,7 +38,7 @@ html body {
 }
 
 nav .pagination .page-item .page-link {
-    background-color: rgba(49, 121, 52, 0.486);
+    background-color: #403D39;
 }
 
 #login-form *,  #register-form * {
@@ -43,9 +47,9 @@ nav .pagination .page-item .page-link {
 }
 
 .my-label {
-    border: 3px solid hsl(130, 75%, 30%);
+    border: 3px solid #6A6761;
     border-radius: 5px;
-    background-color: hsl(130, 75%, 60%);
+    background-color: #949089;
 }
 
 .comment-properties {
@@ -57,7 +61,7 @@ nav .pagination .page-item .page-link {
 }
 
 #my-list {
-    background-color: hsl(123, 50%, 10%);
+    background-color: #8E635F;
 }
 
 #logout-form {

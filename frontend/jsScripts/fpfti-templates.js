@@ -43,14 +43,14 @@ function template(pic, op, title, id, likeCount, classs, purpose) {
                 '</div>' +
             '</a>' +
             '<div class="card-body">' +
-                '<div class="badge bg-success">' +
+                '<div class="badge bg-light text-dark">' +
                     '<form action="https://s113.labagh.pl/index.html" class="d-flex" method="GET">' +
                         '<input type="hidden" name="page" value="search"></input>' +
                         '<input type="hidden" name="query" value="' + op + '"></input>' +
                         '<button class="search-button" type="submit">Author: ' + op + '</button>' +
                     '</form>' +
                 '</div> ' +
-                '<span class="badge bg-success test">' +
+                '<span class="badge bg-light text-dark test">' +
                     'Id: ' + id +
                 '</span>' +
                 '<a href=' + link +
@@ -85,14 +85,14 @@ function template_id(id) {
                     '<h5>' + this.title + '</h5>' +
                 '</div>' +
                 '<div class="card-body">' +
-                    '<div class="badge bg-success">' +
+                    '<div class="badge bg-light text-dark">' +
                         '<form action="https://s113.labagh.pl/index.html" class="d-flex" method="GET">' +
                             '<input type="hidden" name="page" value="search"></input>' +
                             '<input type="hidden" name="query" value="' + this.user_id + '"></input>' +
                             '<button class="search-button" type="submit">Author: ' + this.user_id + '</button>' +
                         '</form>' +
                     '</div> ' +
-                    '<span class="badge bg-success test">' +
+                    '<span class="badge bg-light text-dark test">' +
                         'Id: ' + this.id +
                     '</span>' +    
                     '<div class="d-flex justify-content-evenly p-2">' +
@@ -118,7 +118,7 @@ function template_id(id) {
                 var tablica_json = JSON.parse(json);
                 jQuery.each(tablica_json.data, function() { 
                     $(".tags").append('' + 
-                        '<div class="badge bg-success">' +
+                        '<div class="badge bg-light text-dark">' +
                         '<form action="https://s113.labagh.pl/index.html" class="d-flex" method="GET">' +
                             '<input type="hidden" name="page" value="search"></input>' +
                             '<input type="hidden" name="query" value="' + this.tag + '"></input>' +

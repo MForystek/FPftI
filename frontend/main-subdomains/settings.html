@@ -4,7 +4,7 @@
     </div>
     <div class="card-body">
         <form action="https://s113.labagh.pl/backend/userchange.php" class="d-flex settings" method="POST">
-            <div class="container setting">
+            <div class="container setting" id="info">
                 <div class="row justify-content-center">
                     <div class="col-md-4">
                         <label for="fname" class="form-label">Type name</label>
@@ -72,3 +72,8 @@
         </form>
     </div>
 </div>
+<script>
+    $("#info").children().each(function(){
+        this.className += " plain-text";
+    });
+</script>

@@ -22,7 +22,7 @@ function adder(amount) {
     $(".comments").append(temp);
 }
 
-function comtemplate(user_id, text, comment_id, curr) {
+function comtemplate(user_id, text, comment_id) {
     var temp =  '<div class="card-body">' +
                     '<div class="card bg-transparent">' +
                             '<div class="card-header com">' +
@@ -45,24 +45,50 @@ function comtemplate(user_id, text, comment_id, curr) {
 function addDelButton() {
     //var where = $(".comment-properties");
     var curr_id = getJSessionId();
-    var btnCtr = creatButton();
+    
     $(".com-search").each(function(index){
         var tekst = $( this ).text();
-        console.log(tekst);
+        //console.log(tekst);
         if(tekst.includes(curr_id)){
             var tmp = this.closest(".com");
+            var tekst2 = $( this ).text();
+            var val = tekst2.substring(tekst2.length - 2, tekst2.length); 
+            var btnCtr = creatButton(val);
             tmp.appendChild(btnCtr);
             console.log(this);
         }
     });
 }
 
-function creatButton() {
+function creatButton(val) {
+    var id_fpfti = findGetParameter("id");
+    var form = document.createElement("form");
     var btnContainer = document.createElement("div");
-    btnContainer.className = "d-flex flex-row-reverse bd-highlight del";
     var btnrmv = document.createElement("button");
+    var inpt = document.createElement("input");
+    var inpt2 = document.createElement("input");
+
+    form.action = "https://s113.labagh.pl/backend/deletecomment.php";
+    form.className = "d-flex";
+    form.method = "POST";
+
+    inpt.type = "hidden";
+    inpt.name = "comment-id";
+    inpt.value = val;
+
+    inpt2.type = "hidden";
+    inpt2.name = "fpfti-id";
+    inpt2.value = id_fpfti;
+
+    btnContainer.className = "d-flex flex-row-reverse bd-highlight del";
     btnrmv.className = "btn btn-success btn-sm"
     btnrmv.innerHTML = "delete your comment";
-    btnContainer.appendChild(btnrmv);
+    btnrmv.name = "comment-remove";
+    btnrmv.type = "submit";
+
+    form.appendChild(inpt);
+    form.appendChild(inpt2);
+    form.appendChild(btnrmv);
+    btnContainer.appendChild(form);
     return btnContainer;
 }
