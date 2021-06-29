@@ -15,7 +15,7 @@
 
     try {
     $page = isset($_GET['page']) ? $_GET['page'] : die();
-    $fpfti_tag = htmlspecialchars($_POST['tag']);
+    $fpfti_tag = htmlspecialchars($_POST['query']);
 
     
 
