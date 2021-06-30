@@ -33,7 +33,7 @@ function insert_pagination() {
         '<li class="pag-item">' +
             '<form class="d-flex page-item" action="https://s113.labagh.pl/index.html" method="GET">' +
                 '<input type="hidden" name="page" value="' + page + '">' +
-                '<input class="page-link" style="width: 60px !important;" type="number" name="pag">' +
+                '<input class="page-link" style="width: 60px !important;" type="number" name="pag" value="' + pag + '">' +
                 '<button class="page-link" type="submit">Go</button>' +
             '</form>' +
         '</li>' +
